@@ -16,6 +16,5 @@ public class MainActivity extends AppCompatActivity {
 
         txt.setText("Byeeee");
         System.out.println(".");
-        System.out.println("test");
     }
 }
