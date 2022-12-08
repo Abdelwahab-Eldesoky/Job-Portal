@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ResgisterActivity">
+        <EditText
+            android:id="@+id/txtName"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:drawableStart="@drawable/person"
+            android:drawableLeft="@drawable/person"
+            android:drawablePadding="7dp"
+            android:ems="10"
+            android:hint="Enter Your Name"
+            android:inputType="text"
+            android:textColor="@color/white"
+            android:textColorHint="#C0C0C0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.021" />
+
+        <EditText
+            android:id="@+id/txtSSN"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:drawableStart="@drawable/person"
+            android:drawableLeft="@drawable/person"
+            android:drawablePadding="7dp"
+            android:ems="10"
+            android:hint="Enter Your SSN"
+            android:inputType="text"
+            android:textColor="@color/white"
+            android:textColorHint="#C0C0C0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtPassword"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <EditText
+            android:id="@+id/txtMajor"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:drawableStart="@drawable/person"
+            android:drawableLeft="@drawable/person"
+            android:drawablePadding="7dp"
+            android:ems="10"
+            android:hint="Enter Your Major"
+            android:inputType="text"
+            android:textColor="@color/white"
+            android:textColorHint="#C0C0C0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtAddress"
+            app:layout_constraintVertical_bias="0.0" />
+        <EditText
+            android:id="@+id/txtAddress"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:hint="Enter Your Address"
+            android:inputType="text"
+            android:textColor="@color/white"
+            android:textColorHint="#C0C0C0"
+            android:drawableStart="@drawable/person"
+            android:drawableLeft="@drawable/person"
+            android:drawablePadding="7dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtMail"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <EditText
+            android:id="@+id/txtPhone"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:drawableStart="@drawable/person"
+            android:drawableLeft="@drawable/person"
+            android:drawablePadding="7dp"
+            android:ems="10"
+            android:hint="Enter Your Phone Number"
+            android:inputType="text|phone"
+            android:textColor="@color/white"
+            android:textColorHint="#C0C0C0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtSSN"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <EditText
+            android:id="@+id/txtYearsOfExperience"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:drawableStart="@drawable/person"
+            android:drawableLeft="@drawable/person"
+            android:drawablePadding="7dp"
+            android:ems="10"
+            android:hint="Enter Your Years Of Experience"
+            android:inputType="text"
+            android:textColor="@color/white"
+            android:textColorHint="#C0C0C0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtGradYear"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <EditText
+            android:id="@+id/txtPassword"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:drawableStart="@drawable/lock"
+            android:drawableLeft="@drawable/lock"
+            android:drawablePadding="7dp"
+            android:ems="10"
+            android:hint="Enter Your Password"
+            android:inputType="textPassword"
+            android:textColor="@color/white"
+            android:textColorHint="#C0C0C0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtUsername"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <EditText
+            android:id="@+id/txtGradYear"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:drawableStart="@drawable/person"
+            android:drawableLeft="@drawable/person"
+            android:drawablePadding="7dp"
+            android:ems="10"
+            android:hint="Enter Your Graduation Year"
+            android:inputType="text"
+            android:textColor="@color/white"
+            android:textColorHint="#C0C0C0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtUniversity"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <EditText
+            android:id="@+id/txtMail"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:drawableStart="@drawable/person"
+            android:drawableLeft="@drawable/person"
+            android:drawablePadding="7dp"
+            android:ems="10"
+            android:hint="Enter Your E-mail"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/white"
+            android:textColorHint="#C0C0C0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtPhone"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <EditText
+            android:id="@+id/txtUniversity"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:drawableStart="@drawable/person"
+            android:drawableLeft="@drawable/person"
+            android:drawablePadding="7dp"
+            android:ems="10"
+            android:hint="Enter Your University"
+            android:inputType="text"
+            android:textColor="@color/white"
+            android:textColorHint="#C0C0C0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtMajor"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <EditText
+            android:id="@+id/txtUsername"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:drawableStart="@drawable/person"
+            android:drawableLeft="@drawable/person"
+            android:drawablePadding="7dp"
+            android:ems="10"
+            android:hint="Enter Your Username"
+            android:inputType="text"
+            android:textColor="@color/white"
+            android:textColorHint="#C0C0C0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtName"
+            app:layout_constraintVertical_bias="0.001" />
+
+        <RadioGroup
+            android:id="@+id/grpGradState"
+            android:layout_width="139dp"
+            android:layout_height="98dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.181"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtYearsOfExperience"
+            app:layout_constraintVertical_bias="0.023">
+
+            <RadioButton
+                android:id="@+id/rdbUnderGrad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Undergraduate" />
+
+            <RadioButton
+                android:id="@+id/rdbGraduate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Graduate" />
+        </RadioGroup>
+
+        <RadioGroup
+            android:id="@+id/grpGender"
+            android:layout_width="140dp"
+            android:layout_height="114dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="164dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.814"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtYearsOfExperience"
+            app:layout_constraintVertical_bias="1.0">
+
+            <RadioButton
+                android:id="@+id/rdbMale"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Male" />
+
+            <RadioButton
+                android:id="@+id/rdbFemale"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Female" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded"
+            android:outlineAmbientShadowColor="#00BFFF"
+            android:outlineSpotShadowColor="#00BFFF"
+            android:text="Register"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/grpGender"
+            app:layout_constraintVertical_bias="0.637" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
