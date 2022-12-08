@@ -2,6 +2,7 @@ package com.example.jobportal;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -17,7 +18,8 @@ public class PortalDB extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table jobSeeker (SSN integer primary key,UserName text unique not null , password text not null, name text not null , mail text not null , major text not null, uniName text not null , gradYear integer not null ,gradState text not null,address text,yearsOfExp integer not null )");
+        System.out.println("create DB");
+        db.execSQL("create table jobSeeker (SSN text primary key,UserName text unique not null,phone text , password text not null, name text not null , mail text not null , major text not null, uniName text not null , gradYear integer not null ,gradState text not null,address text,yearsOfExp integer not null )");
 
         db.execSQL("create table Recruiter(UserName text primary key, name text,password text not null)");
 
@@ -31,6 +33,7 @@ public class PortalDB extends SQLiteOpenHelper {
     public void addSeeker(jobSeeker seek){
         ContentValues row=new ContentValues();
         row.put("SSN",seek.getSSN());
+        row.put("phone",seek.getPhoneNumber());
         row.put("UserName",seek.getUsername());
         row.put("password",seek.getPassword());
         row.put("name",seek.getName());
@@ -44,6 +47,42 @@ public class PortalDB extends SQLiteOpenHelper {
         PortalDb=getWritableDatabase();
         PortalDb.insert("jobSeeker",null,row);
         PortalDb.close();
+    }
+
+    public void addVacancy(jobVacancy vacancy){
+        ContentValues row=new ContentValues();
+        row.put("tittle",vacancy.getTittle());
+        row.put("jobType",vacancy.getJobType());
+        row.put("expNeeded",vacancy.getExpNeeded());
+        row.put("compName",vacancy.getCompName());
+        row.put("compMail",vacancy.getCompMail());
+        row.put("compAddress",vacancy.getCompAddress());
+        //row.put("RecruiterUsername",seek.getYearsOfExp());
+        PortalDb=getWritableDatabase();
+        PortalDb.insert("jobSeeker",null,row);
+        PortalDb.close();
+    }
+
+    public String validateSeekerData(String userName , String password){
+        System.out.println("Ana gwaaaaaaaaaaaaaaa");
+        PortalDb=getReadableDatabase();
+        String[] rawdetails={"SSN"};
+        String[] args={userName,password};
+        Cursor c=PortalDb.query("jobSeeker",rawdetails,"UserName=? and password = ?",args ,null,null,null);
+
+        String SSN = "Not Found";
+        if(c!=null){
+            c.moveToFirst();
+            if(c.getCount()>0){
+
+                SSN= c.getString(0);
+            }
+
+        }
+        PortalDb.close();
+
+        System.out.println("SSN"+SSN);
+        return SSN;
     }
 
 

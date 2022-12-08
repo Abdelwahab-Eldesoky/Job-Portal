@@ -5,10 +5,15 @@ public class User {
     private String username;
 
     private String password;
-    private int SSN;
+
+
+    public User(String name, String username, String password) {
+        this.name = name;
+        this.username = username;
+        this.password = password;
+    }
 
     public User() {
-
     }
 
     public void setName(String name) {
@@ -39,20 +44,6 @@ public class User {
         return password;
     }
 
-    public int getSSN() {
-        return SSN;
-    }
 
-    public void setSSN(int SSN) {
-        this.SSN = SSN;
-    }
-    public boolean login(String username , String password){
-        if(this.username.equals(username) && this.password.equals(password)){
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
+
 }
