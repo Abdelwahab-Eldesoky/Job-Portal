@@ -126,9 +126,9 @@ public class jobSeeker extends User{
 
 
     }
-    public static String login(PortalDB db , String username , String password){
+    public static String login(String tableName,PortalDB db , String username , String password){
 
-        String validate=String.valueOf(db.validateSeekerData(username,password));
+        String validate=String.valueOf(db.validateSeekerData(tableName,username,password));
         if(validate=="Not Found"){
             System.out.println("not found");
             return "Not Found";

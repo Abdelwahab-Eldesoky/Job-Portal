@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
         EditText passwordtext=(EditText)findViewById(R.id.editTextTextPersonName2) ;
         Button login=(Button) findViewById(R.id.button);
         final PortalDB database=new PortalDB(this);
+        Intent intent = getIntent();
+        String tableName=intent.getStringExtra("Table Name");
 
 
 
@@ -34,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
                 String seekerSSN;
                 String userName=usernametext.getText().toString();
                 String password=passwordtext.getText().toString();
-                seekerSSN=jobSeeker.login(database,userName,password);
+                seekerSSN=jobSeeker.login(tableName,database,userName,password);
                 if(seekerSSN.equals("Not Found") ){
                     Toast.makeText(getApplicationContext(),"User not found",Toast.LENGTH_LONG).show();
                 }
