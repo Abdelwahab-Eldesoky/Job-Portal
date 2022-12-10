@@ -16,6 +16,7 @@
             android:id="@+id/txtName"
             android:layout_width="300dp"
             android:layout_height="50dp"
+            android:layout_marginTop="5dp"
             android:drawableStart="@drawable/person_cyan"
             android:drawableLeft="@drawable/person_cyan"
             android:drawablePadding="7dp"
@@ -28,32 +29,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.494"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lblName"
+            app:layout_constraintTop_toTopOf="@+id/lblName"
             app:layout_constraintVertical_bias="0.017" />
 
-        <EditText
-            android:id="@+id/txtSSN"
-            android:layout_width="300dp"
-            android:layout_height="50dp"
-            android:drawableStart="@drawable/ssn"
-            android:drawableLeft="@drawable/person"
-            android:drawablePadding="7dp"
-            android:ems="10"
-            android:hint="Enter Your SSN"
-            android:inputType="text"
-            android:textColor="@color/white"
-            android:textColorHint="#C0C0C0"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.494"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtPassword"
-            app:layout_constraintVertical_bias="0.0" />
 
         <EditText
             android:id="@+id/txtMajor"
             android:layout_width="300dp"
             android:layout_height="50dp"
+            android:layout_marginTop="38dp"
             android:ems="10"
             android:hint="       Enter Your Major"
             android:inputType="text"
@@ -70,6 +54,7 @@
             android:id="@+id/txtAddress"
             android:layout_width="300dp"
             android:layout_height="50dp"
+            android:layout_marginTop="38dp"
             android:drawableStart="@drawable/location"
             android:drawableLeft="@drawable/location"
             android:drawablePadding="7dp"
@@ -89,6 +74,7 @@
             android:id="@+id/txtPhone"
             android:layout_width="300dp"
             android:layout_height="50dp"
+            android:layout_marginTop="38dp"
             android:drawableStart="@drawable/phone"
             android:drawableLeft="@drawable/phone"
             android:drawablePadding="7dp"
@@ -101,13 +87,14 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.494"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtSSN"
+            app:layout_constraintTop_toBottomOf="@+id/txtPassword"
             app:layout_constraintVertical_bias="0.0" />
 
         <EditText
             android:id="@+id/txtYearsOfExperience"
             android:layout_width="300dp"
             android:layout_height="50dp"
+            android:layout_marginTop="38dp"
             android:ems="10"
             android:hint="       Enter Your Years Of Experience"
             android:inputType="text"
@@ -124,6 +111,7 @@
             android:id="@+id/txtPassword"
             android:layout_width="300dp"
             android:layout_height="50dp"
+            android:layout_marginTop="38dp"
             android:drawableStart="@drawable/lock_cyan"
             android:drawableLeft="@drawable/lock_cyan"
             android:drawablePadding="7dp"
@@ -143,6 +131,7 @@
             android:id="@+id/txtGradYear"
             android:layout_width="300dp"
             android:layout_height="50dp"
+            android:layout_marginTop="38dp"
             android:ems="10"
             android:hint="       Enter Your Graduation Year"
             android:inputType="text"
@@ -159,6 +148,7 @@
             android:id="@+id/txtMail"
             android:layout_width="300dp"
             android:layout_height="50dp"
+            android:layout_marginTop="38dp"
             android:drawableStart="@drawable/mail"
             android:drawableLeft="@drawable/mail"
             android:drawablePadding="7dp"
@@ -178,6 +168,7 @@
             android:id="@+id/txtUniversity"
             android:layout_width="300dp"
             android:layout_height="50dp"
+            android:layout_marginTop="38dp"
             android:ems="10"
             android:hint="       Enter Your University"
             android:inputType="text"
@@ -194,6 +185,7 @@
             android:id="@+id/txtUsername"
             android:layout_width="300dp"
             android:layout_height="50dp"
+            android:layout_marginTop="38dp"
             android:drawableStart="@drawable/person_outlined"
             android:drawableLeft="@drawable/person_outlined"
             android:drawablePadding="7dp"
@@ -213,7 +205,7 @@
             android:id="@+id/grpGradState"
             android:layout_width="241dp"
             android:layout_height="129dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="45dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -235,12 +227,14 @@
                 android:text="Graduate"
                 android:textColor="@color/white"
                 android:textSize="50px" />
+
         </RadioGroup>
 
         <RadioGroup
             android:id="@+id/grpGender"
             android:layout_width="241dp"
             android:layout_height="119dp"
+            android:layout_marginTop="38dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/grpGradState">
@@ -266,7 +260,7 @@
             android:id="@+id/button"
             android:layout_width="220dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="32dp"
             android:layout_marginBottom="30dp"
             android:background="@drawable/rounded"
             android:outlineAmbientShadowColor="#00BFFF"
@@ -283,14 +277,179 @@
             android:id="@+id/lblName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="96dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="84dp"
             android:text="Name"
             android:textColor="@color/white"
             android:textSize="45px"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.131"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/lblUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Username"
+            android:textColor="@color/white"
+            android:textSize="45px"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.15"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtName"
+            app:layout_constraintVertical_bias="0.018" />
+
+        <TextView
+            android:id="@+id/lblUsername2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Password"
+            android:textColor="@color/white"
+            android:textSize="45px"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.149"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtUsername"
+            app:layout_constraintVertical_bias="0.018" />
+
+        <TextView
+            android:id="@+id/lblUsername3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Phone Number"
+            android:textColor="@color/white"
+            android:textSize="45px"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.169"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtPassword"
+            app:layout_constraintVertical_bias="0.019" />
+
+        <TextView
+            android:id="@+id/lblUsername4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email Address"
+            android:textColor="@color/white"
+            android:textSize="45px"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.166"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtPhone"
+            app:layout_constraintVertical_bias="0.021" />
+
+        <TextView
+            android:id="@+id/lblUsername5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Address"
+            android:textColor="@color/white"
+            android:textSize="45px"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.138"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtMail"
+            app:layout_constraintVertical_bias="0.024" />
+
+        <TextView
+            android:id="@+id/lblUsername7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Major"
+            android:textColor="@color/white"
+            android:textSize="45px"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.139"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtAddress"
+            app:layout_constraintVertical_bias="0.023" />
+
+        <TextView
+            android:id="@+id/lblUsername6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="University"
+            android:textColor="@color/white"
+            android:textSize="45px"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.142"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtMajor"
+            app:layout_constraintVertical_bias="0.022" />
+
+        <TextView
+            android:id="@+id/lblUsername9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="2dp"
+            android:text="Years Of Experience (if found)"
+            android:textColor="@color/white"
+            android:textSize="45px"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.263"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtGradYear"
+            app:layout_constraintVertical_bias="0.03" />
+
+        <TextView
+            android:id="@+id/lblUsername8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="17dp"
+            android:text="Graduation Year (or Expected)"
+            android:textColor="@color/white"
+            android:textSize="45px"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.28"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtUniversity"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/lblUsername10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="23dp"
+            android:layout_marginEnd="25dp"
+            android:text="Graduation State"
+            android:textColor="@color/white"
+            android:textSize="45px"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.204"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtYearsOfExperience"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/lblUsername11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="25dp"
+            android:text="Gender"
+            android:textColor="@color/white"
+            android:textSize="45px"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.158"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/grpGradState"
+            app:layout_constraintVertical_bias="0.003" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
