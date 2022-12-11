@@ -85,4 +85,5 @@ public class jobVacancy {
     public void setRecruiterName(String recruiterName) {
         this.recruiterName = recruiterName;
     }
+
 }

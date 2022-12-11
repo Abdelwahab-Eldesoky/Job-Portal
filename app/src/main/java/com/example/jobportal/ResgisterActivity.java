@@ -24,7 +24,6 @@ public class ResgisterActivity extends AppCompatActivity {
         System.out.println("2");
         EditText userNametext=(EditText) findViewById(R.id.txtUsername);
         EditText passwordtext=(EditText) findViewById(R.id.txtPassword);
-        EditText ssntext=(EditText) findViewById(R.id.txtSSN);
         EditText phonetext=(EditText) findViewById(R.id.txtPhone);
         EditText mailtext=(EditText) findViewById(R.id.txtMail);
         EditText majortext=(EditText) findViewById(R.id.txtMajor);
@@ -44,7 +43,6 @@ public class ResgisterActivity extends AppCompatActivity {
                 System.out.println("4");
                 String password=passwordtext.getText().toString();
                 System.out.println("5");
-                String ssn=ssntext.getText().toString();
                 System.out.println("6");
                 String phone=phonetext.getText().toString();
                 System.out.println("7");
@@ -81,7 +79,7 @@ public class ResgisterActivity extends AppCompatActivity {
                     gradState="Undergraduate";
                 }
                 jobSeeker seeker=new jobSeeker(cont);
-                seeker.Register(database,name, userName,password,ssn,phone,mail,major, university,gradYear, gradState,  address, gender,YearsOfExperience);
+                seeker.Register(database,name, userName,password,phone,mail,major, university,gradYear, gradState,  address, gender,YearsOfExperience);
             }
         });
     }

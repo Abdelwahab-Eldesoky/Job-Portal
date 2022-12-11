@@ -112,10 +112,10 @@ public class jobSeeker extends User{
         this.SSN = SSN;
     }
 
-    public void Register(PortalDB db,String name, String username, String password, String SSN,String phoneNumber, String mail, String major, String uniName, int gradYear, String gradState, String address, String gender, int yearsOfExp){
+    public void Register(PortalDB db,String name, String username, String password,String phoneNumber, String mail, String major, String uniName, int gradYear, String gradState, String address, String gender, int yearsOfExp){
     this.setName(name);
     this.setUsername(username);this.setPassword(password);
-    this.setSSN(SSN);this.setPhoneNumber(phoneNumber);
+    this.setPhoneNumber(phoneNumber);
     this.setMail(mail);this.setMajor(major);
     this.setYearsOfExp(yearsOfExp);
     this.setGender(gender);this.setAddress(address);

@@ -26,22 +26,30 @@ public class MainActivity extends AppCompatActivity {
         final PortalDB database=new PortalDB(this);
         Intent intent = getIntent();
         String tableName=intent.getStringExtra("Table Name");
+        System.out.println("abl el click "+tableName);
 
 
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //jobSeeker seek;
-                String seekerSSN;
+                String User;
                 String userName=usernametext.getText().toString();
                 String password=passwordtext.getText().toString();
-                seekerSSN=jobSeeker.login(tableName,database,userName,password);
-                if(seekerSSN.equals("Not Found") ){
+                User=jobSeeker.login(tableName,database,userName,password);
+
+                if(User.equals("Not Found") ){
                     Toast.makeText(getApplicationContext(),"User not found",Toast.LENGTH_LONG).show();
                 }
                 else{
                     Toast.makeText(getApplicationContext(),"Login successfully",Toast.LENGTH_LONG).show();
+                    Intent i =new Intent(MainActivity.this,HomeSeeker.class);
+                    i.putExtra("userName",User);
+                    startActivity(i);
+                    if(tableName=="jobSeeker"){
+                        System.out.println("hiiiiiiiii  "+tableName);
+
+                    }
                 }
 
             }
