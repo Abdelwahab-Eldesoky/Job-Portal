@@ -2,6 +2,7 @@ package com.example.jobportal;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Bundle;
 import android.service.autofill.UserData;
@@ -56,6 +57,7 @@ public class UpdateSeekerInfo extends AppCompatActivity {
         String username=i.getStringExtra("userName");
 
         HashMap<String,String> userData =database.getUserInfo(username);
+        System.out.println("ana fo2  "+userData.get("gradState"));
 
         TextView nameLbl = (TextView) findViewById(R.id.lblSeekerName);
         nameLbl.setText(userData.get("name"));
@@ -97,8 +99,9 @@ public class UpdateSeekerInfo extends AppCompatActivity {
 
         RadioButton graduatedRdb = (RadioButton) findViewById(R.id.rdbGraduate);
         RadioButton underGradRdb = (RadioButton) findViewById(R.id.rdbUnderGrad);
-        if(userData.get("gradState")=="Graduated"){
+        if(userData.get("gradState").equals("Graduated")){
             graduatedRdb.setChecked(true);
+            underGradRdb.setChecked(false);
         }
         else{
             underGradRdb.setChecked(true);
@@ -208,25 +211,29 @@ public class UpdateSeekerInfo extends AppCompatActivity {
 
             }
         });
-        EditText Graduate = new EditText(this);
+
 
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                String Graduate;
                 //To be implemented
                 if(graduatedRdb.isChecked()){
-                    Graduate.setHint("Graduated");
-                    boxes.add(Graduate);
+                   Graduate="Graduated";
+
                 }
                 else{
-                    Graduate.setHint("Undergraduate");
-                    boxes.add(Graduate);
+                   Graduate= "Undergraduate";
+
                 }
-
-                tobeUpdated.add("gradState");
-
-                database.updateInformaation(username,boxes,tobeUpdated);
+                ContentValues values=new ContentValues();
+                for(int i=0;i<tobeUpdated.size();i++){
+                    values.put(tobeUpdated.get(i),boxes.get(i).getText().toString());
+                    System.out.println(tobeUpdated.get(i) + " "+boxes.get(i).getText().toString());
+                }
+                values.put("gradState",Graduate);
+                database.updateInformaation(username,values);
 
             }
         });

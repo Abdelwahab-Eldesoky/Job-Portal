@@ -116,14 +116,8 @@ public class PortalDB extends SQLiteOpenHelper {
         System.out.println("UserName "+UserName);
         return UserName;
     }
-    public void updateInformaation (String username, ArrayList<EditText> editTexts,ArrayList<String> tobeUpdated){
-
+    public void updateInformaation (String username, ContentValues values){
         PortalDb=getReadableDatabase();
-        ContentValues values=new ContentValues();
-        for(int i=0;i<tobeUpdated.size();i++){
-            values.put(tobeUpdated.get(i),editTexts.get(i).getText().toString());
-            System.out.println(tobeUpdated.get(i) + " "+editTexts.get(i).getText().toString());
-        }
         PortalDb.update("jobSeeker",values,"UserName=?",new String[]{username});
         PortalDb.close();
     }
