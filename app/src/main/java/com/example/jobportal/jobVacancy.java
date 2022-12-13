@@ -10,8 +10,9 @@ public class jobVacancy {
     private String compMail;
     private String compAddress;
     private String recruiterName;
+    public String description;
 
-    public jobVacancy(String tittle, String jobType, int expNeeded, String compName, String compMail, String compAddress, String recruiterName) {
+    public jobVacancy(int vacancyID,String tittle, String jobType, int expNeeded, String compName, String compMail, String compAddress, String recruiterName,String description) {
 
         this.tittle = tittle;
         this.jobType = jobType;
@@ -20,6 +21,8 @@ public class jobVacancy {
         this.compMail = compMail;
         this.compAddress = compAddress;
         this.recruiterName = recruiterName;
+        this.vacancyID=vacancyID;
+        this.description=description;
     }
 
     public int getVacancyID() {
@@ -86,4 +89,11 @@ public class jobVacancy {
         this.recruiterName = recruiterName;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }
