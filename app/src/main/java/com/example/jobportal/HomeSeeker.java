@@ -31,5 +31,13 @@ public class HomeSeeker extends AppCompatActivity {
         });
 
 
+        showOffers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(HomeSeeker.this,AvailableJobOffers.class);
+                i.putExtra("userName",username);
+                startActivity(i);
+            }
+        });
     }
 }

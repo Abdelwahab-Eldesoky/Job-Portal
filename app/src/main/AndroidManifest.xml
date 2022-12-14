@@ -21,6 +21,9 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".SingleOfferDetails"
+            android:exported="false" />
+        <activity
             android:name=".Regester_Recruiter"
             android:exported="false">
             <meta-data
@@ -41,6 +44,9 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+        <activity
+            android:name=".AvailableJobOffers"
+            android:exported="false" />
         <activity
             android:name=".UpdateSeekerInfo"
             android:exported="false" />

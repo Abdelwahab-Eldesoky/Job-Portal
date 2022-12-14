@@ -4,19 +4,25 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Hoba Data/Universty/Components/JobPortal/app/src/main/res/drawable/back_button.xml" value="0.2" />
+        <entry key="..\:/Hoba Data/Universty/Components/JobPortal/app/src/main/res/drawable/bookmark.xml" value="0.177" />
         <entry key="..\:/Hoba Data/Universty/Components/JobPortal/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1125" />
         <entry key="..\:/Hoba Data/Universty/Components/JobPortal/app/src/main/res/drawable/left_rounded.xml" value="0.2" />
+        <entry key="..\:/Hoba Data/Universty/Components/JobPortal/app/src/main/res/drawable/lock.xml" value="0.177" />
         <entry key="..\:/Hoba Data/Universty/Components/JobPortal/app/src/main/res/drawable/lock_cyan.xml" value="0.1745" />
+        <entry key="..\:/Hoba Data/Universty/Components/JobPortal/app/src/main/res/drawable/mail.xml" value="0.177" />
         <entry key="..\:/Hoba Data/Universty/Components/JobPortal/app/src/main/res/drawable/person.xml" value="0.1745" />
         <entry key="..\:/Hoba Data/Universty/Components/JobPortal/app/src/main/res/drawable/personCyan.xml" value="0.1745" />
         <entry key="..\:/Hoba Data/Universty/Components/JobPortal/app/src/main/res/drawable/right_rounded.xml" value="0.2" />
         <entry key="..\:/Hoba Data/Universty/Components/JobPortal/app/src/main/res/drawable/roonded.xml" value="0.1645" />
         <entry key="..\:/Hoba Data/Universty/Components/JobPortal/app/src/main/res/drawable/rounded.xml" value="0.1645" />
         <entry key="..\:/Hoba Data/Universty/Components/JobPortal/app/src/main/res/drawable/ssn.xml" value="0.1745" />
+        <entry key="..\:/Hoba Data/Universty/Components/JobPortal/app/src/main/res/layout/activity_available_job_offers.xml" value="0.176" />
         <entry key="..\:/Hoba Data/Universty/Components/JobPortal/app/src/main/res/layout/activity_home_seeker.xml" value="0.2439814814814815" />
         <entry key="..\:/Hoba Data/Universty/Components/JobPortal/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
         <entry key="..\:/Hoba Data/Universty/Components/JobPortal/app/src/main/res/layout/activity_resgister.xml" value="0.264" />
+        <entry key="..\:/Hoba Data/Universty/Components/JobPortal/app/src/main/res/layout/activity_single_offer_details.xml" value="0.2439814814814815" />
         <entry key="..\:/Hoba Data/Universty/Components/JobPortal/app/src/main/res/layout/activity_update_seeker_info.xml" value="0.2209188660801564" />
+        <entry key="..\:/Hoba Data/Universty/Components/JobPortal/app/src/main/res/layout/single_view_item.xml" value="0.22435897435897437" />
         <entry key="..\:/Hoba Data/Universty/Components/JobPortal/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1125" />
       </map>
     </option>
