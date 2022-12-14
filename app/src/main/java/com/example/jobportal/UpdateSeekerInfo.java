@@ -18,30 +18,6 @@ import java.util.HashMap;
 
 public class UpdateSeekerInfo extends AppCompatActivity {
 
-
-
-    /*public void fillData(String name, String username, String phoneNumber, String mail, String major, String uniName, int gradYear, String gradState, String address, String gender, int yearsOfExp) {
-        nameLbl.setText(name);
-        usernameLbl.setText(username);
-        genderLbl.setText(gender);
-
-        phoneTxt.setHint(phoneNumber);
-        emailTxt.setHint(mail);
-        addressTxt.setHint(address);
-        majorTxt.setHint(major);
-        universityTxt.setHint(uniName);
-        gradYearTxt.setHint(gradYear);
-        yearsOfExpTxt.setHint(yearsOfExp);
-
-        if (gradState.equals("graduate")) {
-            underGradRdb.setEnabled(false);
-            graduatedRdb.setEnabled(true);
-        } else {
-            graduatedRdb.setEnabled(false);
-            underGradRdb.setEnabled(true);
-        }
-    }
-*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,65 +25,59 @@ public class UpdateSeekerInfo extends AppCompatActivity {
         final PortalDB database=new PortalDB(this);
 
         ArrayList<String> tobeUpdated =new ArrayList<>();
-        ArrayList<String> values =new ArrayList<>();
         ArrayList<EditText> boxes=new ArrayList<>();
-
 
         Intent i = getIntent();
         String username=i.getStringExtra("userName");
 
-        HashMap<String,String> userData =database.getUserInfo(username);
-        System.out.println("ana fo2  "+userData.get("gradState"));
+        jobSeeker seeker=database.getUserInfo(username);
 
         TextView nameLbl = (TextView) findViewById(R.id.lblSeekerName);
-        nameLbl.setText(userData.get("name"));
+        nameLbl.setText(seeker.getName());
 
         TextView usernameLbl = (TextView) findViewById(R.id.lblSeekerUsername);
-        usernameLbl.setText(userData.get("UserName"));
+        usernameLbl.setText(seeker.getUsername());
 
         TextView genderLbl = (TextView) findViewById(R.id.lblSeekerGender);
-        genderLbl.setText(userData.get("gender"));
+        genderLbl.setText(seeker.getGender());
 
         EditText passwordTxt = (EditText) findViewById(R.id.txtPassword);
-        passwordTxt.setHint(userData.get("password"));
+        passwordTxt.setHint(seeker.getPassword());
 
         EditText phoneTxt = (EditText) findViewById(R.id.txtPhone);
-        phoneTxt.setHint(userData.get("phone"));
+        phoneTxt.setHint(seeker.getPhoneNumber());
 
         EditText emailTxt = (EditText) findViewById(R.id.txtMail);
-        emailTxt.setHint(userData.get("mail"));
+        emailTxt.setHint(seeker.getMail());
 
         EditText addressTxt = (EditText) findViewById(R.id.txtAddress);
-        addressTxt.setHint(userData.get("address"));
+        addressTxt.setHint(seeker.getAddress());
 
         EditText majorTxt = (EditText) findViewById(R.id.txtMajor);
-        majorTxt.setHint(userData.get("major"));
+        majorTxt.setHint(seeker.getMajor());
 
         EditText universityTxt = (EditText) findViewById(R.id.txtUniversity);
-        universityTxt.setHint(userData.get("uniName"));
+        universityTxt.setHint(seeker.getUniName());
 
         EditText gradYearTxt = (EditText) findViewById(R.id.txtGradYear);
-        gradYearTxt.setHint(userData.get("gradYear"));
+        gradYearTxt.setHint(String.valueOf(seeker.getGradYear()));
 
         EditText yearsOfExpTxt = (EditText) findViewById(R.id.txtYearsOfExperience);
-        yearsOfExpTxt.setHint(userData.get("yearsOfExp"));
+        yearsOfExpTxt.setHint(String.valueOf(seeker.getYearsOfExp()));
 
-        //Setting Edittexts with value
 
         RadioGroup gradStateGrp = (RadioGroup) findViewById(R.id.grpGradState);
 
 
         RadioButton graduatedRdb = (RadioButton) findViewById(R.id.rdbGraduate);
         RadioButton underGradRdb = (RadioButton) findViewById(R.id.rdbUnderGrad);
-        if(userData.get("gradState").equals("Graduated")){
+        if(seeker.getGradState().equals("Graduated")){
             graduatedRdb.setChecked(true);
             underGradRdb.setChecked(false);
         }
         else{
             underGradRdb.setChecked(true);
         }
-
-
 
         Button passwordEditBtn = (Button) findViewById(R.id.btnEditPassword);
         Button phoneEditBtn = (Button) findViewById(R.id.btnEditPhone);

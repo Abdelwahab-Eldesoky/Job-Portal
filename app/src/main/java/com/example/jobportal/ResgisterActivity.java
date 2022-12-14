@@ -78,7 +78,7 @@ public class ResgisterActivity extends AppCompatActivity {
                 else{
                     gradState="Undergraduate";
                 }
-                jobSeeker seeker=new jobSeeker(cont);
+                jobSeeker seeker=new jobSeeker();
                 seeker.Register(database,name, userName,password,phone,mail,major, university,gradYear, gradState,  address, gender,YearsOfExperience);
             }
         });

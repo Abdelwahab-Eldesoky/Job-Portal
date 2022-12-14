@@ -81,7 +81,8 @@ public class PortalDB extends SQLiteOpenHelper {
         PortalDb.close();
     }
 
-    public HashMap<String,String> getUserInfo(String userName){
+    @SuppressLint("Range")
+    public jobSeeker getUserInfo(String userName){
         //UserName ,phone , password, name , mail , major , uniName , gradYear ,gradState ,address ,yearsOfExp
         PortalDb=getReadableDatabase();
         String[] rawdetails={"name,UserName,password","phone","mail","address","major","uniName","gradYear","yearsOfExp","gradState","gender"};
@@ -90,24 +91,22 @@ public class PortalDB extends SQLiteOpenHelper {
         if(c!=null){
             c.moveToFirst();
         }
-        System.out.println("tryyyyyyyy "+c.getString(0));
-        System.out.println("yarabbbbbbbbbb");
-        HashMap<String,String> data=new HashMap<>();
-        data.put("name",c.getString(0));
-        data.put("UserName",c.getString(1));
-        data.put("password",c.getString(2));
-        data.put("phone",c.getString(3));
-        data.put("mail",c.getString(4));
-        data.put("address",c.getString(5));
-        data.put("major",c.getString(6));
-        data.put("uniName",c.getString(7));
-        System.out.println("uniName"+c.getString(7));
-        data.put("gradYear",c.getString(8));
-        data.put("yearsOfExp",c.getString(9));
-        data.put("gradState",c.getString(10));
-        data.put("gender",c.getString(11));
+        jobSeeker seeker=new jobSeeker();
+        seeker.setName(c.getString(c.getColumnIndex("name")));
+        seeker.setUsername(userName);
+        seeker.setPassword(c.getString(c.getColumnIndex("password")));
+        seeker.setPhoneNumber(c.getString(c.getColumnIndex("phone")));
+        seeker.setMail(c.getString(c.getColumnIndex("mail")));
+        seeker.setAddress(c.getString(c.getColumnIndex("address")));
+        seeker.setMajor(c.getString(c.getColumnIndex("major")));
+        seeker.setUniName(c.getString(c.getColumnIndex("uniName")));
+        seeker.setGradYear(Integer.parseInt(c.getString(c.getColumnIndex("gradYear"))));
+        seeker.setYearsOfExp(Integer.parseInt(c.getString(c.getColumnIndex("yearsOfExp"))));
+        seeker.setGradState(c.getString(c.getColumnIndex("gradState")));
+        seeker.setGender(c.getString(c.getColumnIndex("gender")));
+
         PortalDb.close();
-        return data;
+        return seeker;
     }
 
     public String validateSeekerData(String tableName,String userName , String password){
@@ -179,9 +178,33 @@ public class PortalDB extends SQLiteOpenHelper {
         PortalDb.close();
         return vacancies;
     }
+    @SuppressLint("Range")
+    public jobVacancy getVacancyInfo(int id){
+
+        PortalDb=getReadableDatabase();
+        String[] rowdetails={"jobDescription,RecruiterUsername,compAddress,compMail,compName,expNeeded,jobType,tittle"};
+        Cursor c=PortalDb.query("jobVacancy",rowdetails,"vacancyID=?",new String[]{String.valueOf(id)} ,null,null,null);
+        if(c!=null)
+        {
+            c.moveToFirst();
+        }
+
+        jobVacancy vacancy=new jobVacancy();
+        vacancy.setVacancyID(id);
+        vacancy.setCompMail(c.getString(c.getColumnIndex("compMail")));
+        vacancy.setRecruiterName(c.getString(c.getColumnIndex("RecruiterUsername")));
+        vacancy.setCompName(c.getString(c.getColumnIndex("compName")));
+        vacancy.setTittle(c.getString(c.getColumnIndex("tittle")));
+        vacancy.setJobType(c.getString(c.getColumnIndex("jobType")));
+        vacancy.setCompAddress(c.getString(c.getColumnIndex("compAddress")));
+        vacancy.setExpNeeded(Integer.parseInt(c.getString(c.getColumnIndex("expNeeded"))));
+        vacancy.setDescription(c.getString(c.getColumnIndex("jobDescription")));
+        return vacancy;
+
+    }
 
     @Override
-    public void onUpgrade(SQLiteDatabase db, int i, int i1) {
+    public void onUpgrade(SQLiteDatabase db, int i, int i1){
         db.execSQL("DROP TABLE IF EXISTS jobSeeker");
         db.execSQL("DROP TABLE IF EXISTS Recruiter");
         db.execSQL("DROP TABLE IF EXISTS jobVacancy");

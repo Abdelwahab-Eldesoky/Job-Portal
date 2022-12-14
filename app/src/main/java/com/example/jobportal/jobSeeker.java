@@ -30,8 +30,8 @@ public class jobSeeker extends User{
         this.SSN = SSN;
     }
 
-    public jobSeeker(Context context ) {
-        helper =new PortalDB(context);
+    public jobSeeker() {
+
     }
 
     public void setPhoneNumber(String phoneNumber) {
