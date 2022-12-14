@@ -25,6 +25,9 @@ public class jobVacancy {
         this.description=description;
     }
 
+    public jobVacancy() {
+    }
+
     public int getVacancyID() {
         return vacancyID;
     }

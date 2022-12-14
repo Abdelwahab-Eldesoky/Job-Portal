@@ -31,6 +31,7 @@ public class AddVacancy extends AppCompatActivity {
         final PortalDB database=new PortalDB(this);
         Intent intent=getIntent();
         String UserName=intent.getStringExtra("userName");
+        System.out.println("Add vacancy Username "+UserName);
 
         addVacancy.setOnClickListener(new View.OnClickListener() {
 
@@ -43,9 +44,13 @@ public class AddVacancy extends AppCompatActivity {
                 else if(partTime.isChecked()){
                     type="part Time";
                 }
+                System.out.println("userName "+UserName);
                 jobVacancy vacancy=new jobVacancy(Integer.parseInt(jobId.getText().toString()),jobTittle.getText().toString(), type,  Integer.parseInt(ExpNeeded.getText().toString()), companyName.getText().toString(), companyMail.getText().toString(), companyAddress.getText().toString(), UserName,jobDesription.getText().toString());
 
+
+                System.out.println("recruiterName is "+ vacancy.getRecruiterName());
                 database.addVacancy(vacancy);
+                database.ShowAllVacancies();
             }
         });
 

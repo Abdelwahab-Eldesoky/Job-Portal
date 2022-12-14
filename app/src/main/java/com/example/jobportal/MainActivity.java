@@ -12,6 +12,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
 
@@ -27,6 +29,10 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String tableName=intent.getStringExtra("Table Name");
         System.out.println("abl el click "+tableName);
+
+
+       //database.ShowAllVacancies();
+
 
 
 
@@ -65,9 +71,14 @@ public class MainActivity extends AppCompatActivity {
         lblRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(tableName.equals("jobSeeker")){
                 Intent intent =new Intent(MainActivity.this,ResgisterActivity.class);
-                startActivity(intent);
-            }
+                startActivity(intent);}
+                else{
+                    Intent intent =new Intent(MainActivity.this,RecruiterRegister.class);
+                    startActivity(intent);}
+                }
+
         });
 
     }

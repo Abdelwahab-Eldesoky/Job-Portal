@@ -37,12 +37,12 @@
         android:id="@+id/descriptionTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="Company Address"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addressTxt2" />
 
@@ -50,12 +50,12 @@
         android:id="@+id/addressTxt2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="Company Address"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtCompMail2" />
 
@@ -63,7 +63,7 @@
         android:id="@+id/job_title_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="28dp"
         android:ems="10"
         android:hint="title"
         android:inputType="textPersonName"
@@ -73,6 +73,7 @@
         app:layout_constraintTop_toBottomOf="@+id/job_Id_txt" />
 
     <RadioGroup
+        android:id="@+id/radioGroup"
         android:layout_width="253dp"
         android:layout_height="104dp"
         app:layout_constraintBottom_toTopOf="@+id/txtExperienceNeeded"
@@ -98,13 +99,14 @@
         android:id="@+id/txtExperienceNeeded"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
         android:ems="10"
         android:hint="Experience Needed"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="299dp" />
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
     <EditText
         android:id="@+id/txtCompName"
@@ -123,8 +125,10 @@
         android:id="@+id/addVacancy_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
         android:text="Add Vacancy"
-        tools:layout_editor_absoluteX="159dp"
-        tools:layout_editor_absoluteY="651dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/descriptionTxt" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

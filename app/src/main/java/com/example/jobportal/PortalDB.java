@@ -1,5 +1,6 @@
 package com.example.jobportal;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -16,7 +17,7 @@ public class PortalDB extends SQLiteOpenHelper {
     private static String databaseName="PortalDb";
     SQLiteDatabase PortalDb;
     public PortalDB(@Nullable Context context) {
-        super(context, databaseName, null, 4);
+        super(context, databaseName, null, 7);
     }
 
 
@@ -76,7 +77,7 @@ public class PortalDB extends SQLiteOpenHelper {
         row.put("RecruiterUsername",vacancy.getRecruiterName());
         row.put("jobDescription",vacancy.getDescription());
         PortalDb=getWritableDatabase();
-        PortalDb.insert("jobSeeker",null,row);
+        PortalDb.insert("jobVacancy",null,row);
         PortalDb.close();
     }
 
@@ -133,6 +134,50 @@ public class PortalDB extends SQLiteOpenHelper {
         PortalDb=getReadableDatabase();
         PortalDb.update("jobSeeker",values,"UserName=?",new String[]{username});
         PortalDb.close();
+    }
+    @SuppressLint("Range")
+    public ArrayList<jobVacancy> ShowAllVacancies(){
+
+        ArrayList<jobVacancy> vacancies=new ArrayList<>();
+        PortalDb=getReadableDatabase();
+        Cursor c=PortalDb.query("jobVacancy",null,null,null ,null,null,null);
+        if(c!=null){
+            c.moveToFirst();
+        }
+        for(int i =0;i<c.getCount();i++){
+            System.out.println(c.getCount());
+            jobVacancy vacancy=new jobVacancy();
+            vacancy.setVacancyID(Integer.parseInt(c.getString(c.getColumnIndex("vacancyID"))));
+            vacancy.setCompMail(c.getString(c.getColumnIndex("compMail")));
+            vacancy.setRecruiterName(c.getString(c.getColumnIndex("RecruiterUsername")));
+            vacancy.setCompName(c.getString(c.getColumnIndex("compName")));
+            vacancy.setTittle(c.getString(c.getColumnIndex("tittle")));
+            vacancy.setJobType(c.getString(c.getColumnIndex("jobType")));
+            vacancy.setCompAddress(c.getString(c.getColumnIndex("compAddress")));
+            vacancy.setExpNeeded(Integer.parseInt(c.getString(c.getColumnIndex("expNeeded"))));
+            vacancy.setDescription(c.getString(c.getColumnIndex("jobDescription")));
+            vacancies.add(vacancy);
+            c.moveToNext();
+        }
+        for(int i =0;i<vacancies.size();i++){
+            System.out.println("size "+vacancies.size());
+            System.out.println(" id "+vacancies.get(i).getVacancyID());
+            System.out.println("mail "+vacancies.get(i).getCompMail());
+            System.out.println("rec "+vacancies.get(i).getRecruiterName());
+            System.out.println("name "+vacancies.get(i).getCompName());
+            System.out.println("title "+vacancies.get(i).getTittle());
+            System.out.println(vacancies.get(i).getJobType());
+            System.out.println(vacancies.get(i).getCompAddress());
+            System.out.println(vacancies.get(i).getExpNeeded());
+            System.out.println(vacancies.get(i).getDescription());
+            System.out.println("================================================================");
+
+        }
+
+        System.out.println("count= "+c.getCount());
+        System.out.println("test "+(c.getColumnIndex("RecruiterUsername")));
+        PortalDb.close();
+        return vacancies;
     }
 
     @Override

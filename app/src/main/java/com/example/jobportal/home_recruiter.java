@@ -14,15 +14,17 @@ public class home_recruiter extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_recruiter);
         Intent intent=getIntent();
-        String UserName=intent.getStringExtra("userName");
+        String username=intent.getStringExtra("userName");
+        System.out.println("home Recruiter "+username);
 
         Button addVacancy=(Button) findViewById(R.id.add_btn);
 
         addVacancy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                System.out.println("home rec+ "+username);
                 Intent i = new Intent(home_recruiter.this,AddVacancy.class);
-                i.putExtra("userName",UserName);
+                i.putExtra("userName",username);
                 startActivity(i);
 
             }
