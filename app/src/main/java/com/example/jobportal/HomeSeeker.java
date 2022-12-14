@@ -15,7 +15,7 @@ public class HomeSeeker extends AppCompatActivity {
         setContentView(R.layout.activity_home_seeker);
         Button userInfo=(Button) findViewById(R.id.button5);
         Button back=(Button) findViewById(R.id.button6);
-        Button showOffers=(Button) findViewById(R.id.button3);
+        Button showOffers=(Button) findViewById(R.id.add_btn);
         Button seeApplications=(Button) findViewById(R.id.button4);
         Intent intent=getIntent();
         String username=intent.getStringExtra("userName");

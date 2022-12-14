@@ -43,12 +43,18 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else{
                     Toast.makeText(getApplicationContext(),"Login successfully",Toast.LENGTH_LONG).show();
-                    Intent i =new Intent(MainActivity.this,HomeSeeker.class);
-                    i.putExtra("userName",User);
-                    startActivity(i);
-                    if(tableName=="jobSeeker"){
-                        System.out.println("hiiiiiiiii  "+tableName);
 
+                    if(tableName.equals("jobSeeker")){
+                        System.out.println("by  "+tableName);
+                        Intent i =new Intent(MainActivity.this,HomeSeeker.class);
+                        i.putExtra("userName",User);
+                        startActivity(i);
+
+                    }
+                    else{
+                        Intent i =new Intent(MainActivity.this,home_recruiter.class);
+                        i.putExtra("userName",User);
+                        startActivity(i);
                     }
                 }
 

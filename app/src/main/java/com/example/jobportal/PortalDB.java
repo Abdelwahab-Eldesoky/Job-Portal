@@ -16,7 +16,7 @@ public class PortalDB extends SQLiteOpenHelper {
     private static String databaseName="PortalDb";
     SQLiteDatabase PortalDb;
     public PortalDB(@Nullable Context context) {
-        super(context, databaseName, null, 2);
+        super(context, databaseName, null, 4);
     }
 
 
@@ -27,7 +27,7 @@ public class PortalDB extends SQLiteOpenHelper {
 
         db.execSQL("create table Recruiter(UserName text primary key, name text,password text not null)");
 
-        db.execSQL("Create table jobVacancy(vacancyID integer primary key autoincrement , tittle text not null , jobType text not null , expNeeded integer, compName text ,compMail text, compAddress text,RecruiterUsername text,Foreign key(RecruiterUsername) References Recruiter(UserName))");
+        db.execSQL("Create table jobVacancy(vacancyID integer primary key  , tittle text not null , jobType text not null , expNeeded integer, compName text ,compMail text, compAddress text,jobDescription text,RecruiterUsername text,Foreign key(RecruiterUsername) References Recruiter(UserName))");
 
 
         db.execSQL("create table applications(SeekerSSN integer,JobID integer,Foreign key(SeekerSSN) References jobSeeker(SSN) , Foreign key(JobID) References JobVacancy(vacancyID) )");
@@ -51,17 +51,30 @@ public class PortalDB extends SQLiteOpenHelper {
         PortalDb.insert("jobSeeker",null,row);
         PortalDb.close();
     }
+    public void addRecruiter(Recruiter recruiter){
+        ContentValues row=new ContentValues();
+
+        row.put("UserName",recruiter.getUsername());
+        row.put("password",recruiter.getPassword());
+        row.put("name",recruiter.getName());
+
+        PortalDb=getWritableDatabase();
+        PortalDb.insert("Recruiter",null,row);
+        PortalDb.close();
+    }
 
 
     public void addVacancy(jobVacancy vacancy){
         ContentValues row=new ContentValues();
+        row.put("vacancyID",vacancy.getVacancyID());
         row.put("tittle",vacancy.getTittle());
         row.put("jobType",vacancy.getJobType());
         row.put("expNeeded",vacancy.getExpNeeded());
         row.put("compName",vacancy.getCompName());
         row.put("compMail",vacancy.getCompMail());
         row.put("compAddress",vacancy.getCompAddress());
-        //row.put("RecruiterUsername",seek.getYearsOfExp());
+        row.put("RecruiterUsername",vacancy.getRecruiterName());
+        row.put("jobDescription",vacancy.getDescription());
         PortalDb=getWritableDatabase();
         PortalDb.insert("jobSeeker",null,row);
         PortalDb.close();
