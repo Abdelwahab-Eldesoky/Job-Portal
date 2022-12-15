@@ -259,6 +259,7 @@ public class PortalDB extends SQLiteOpenHelper {
         if (c != null) {
             c.moveToFirst();
         }
+        PortalDb.close();
         return c;
     }
 
