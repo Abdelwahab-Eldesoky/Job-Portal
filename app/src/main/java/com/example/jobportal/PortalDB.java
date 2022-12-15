@@ -237,6 +237,8 @@ public class PortalDB extends SQLiteOpenHelper {
         {
             jobIdList.add(Integer.parseInt(c.getString(0)));
         }
+
+        PortalDb.close();
         return jobIdList;
     }
 
