@@ -228,6 +228,7 @@ public class PortalDB extends SQLiteOpenHelper {
     public ArrayList<Integer> showJobs (String RecruiterUsername){
         PortalDb=getReadableDatabase();
         Cursor c=PortalDb.rawQuery("select vacancyID from jobvacancy  where RecruiterUsername=?   ",new String[]{RecruiterUsername});
+        System.out.println("show1");
         if(c!=null)
         {
             c.moveToFirst();
@@ -235,11 +236,24 @@ public class PortalDB extends SQLiteOpenHelper {
         ArrayList<Integer>jobIdList=new ArrayList<>();
         while(!c.isAfterLast())
         {
+            System.out.println("show2");
             jobIdList.add(Integer.parseInt(c.getString(0)));
+            c.moveToNext();
         }
 
+        System.out.println("show3");
         PortalDb.close();
         return jobIdList;
+    }
+    public Cursor showHistory(String username){
+        PortalDb=getReadableDatabase();
+        Cursor c=PortalDb.rawQuery("select jobVacancy.tittle ,applications.applicationState from jobVacancy inner join applications on SeekerUsername=?",new String[]{username});
+        if(c!=null)
+        {
+            c.moveToFirst();
+        }
+        PortalDb.close();
+        return c;
     }
 
 
