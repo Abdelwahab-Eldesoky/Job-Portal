@@ -47,7 +47,7 @@ public class SingleOfferDetails extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 database.addApplication(username,AvailableJobOffers.list.get(position).getVacancyID());
-                database.showApplicants(AvailableJobOffers.list.get(position).getVacancyID());
+                database.setState(username,"Pending",AvailableJobOffers.list.get(position).getVacancyID());
             }
         });
 

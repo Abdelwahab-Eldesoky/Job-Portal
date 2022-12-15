@@ -12,31 +12,30 @@ import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ShowApplicants extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    List<Integer> listOfOffers;
+    List<String> listOfOffers;
     List<jobSeeker> listOfApplicants;
     Spinner spinner;
     PortalDB database;
     String username;
+    AllApplicantsRecyclerViewAdapter applicantsAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_applicants);
-        recyclerView=(RecyclerView) findViewById(R.id.recyclerView);
+        recyclerView=(RecyclerView) findViewById(R.id.recyclerView2);
         recyclerView.setLayoutManager(new LinearLayoutManager(this ));
         database=new PortalDB(this);
-        AllApplicantsRecyclerViewAdapter applicantsAdapter;
 
         username=getIntent().getStringExtra("userName");
         listOfOffers=database.showJobs(username);
 
-        applicantsAdapter=new AllApplicantsRecyclerViewAdapter(this,listOfApplicants,username);
-        recyclerView.setAdapter(applicantsAdapter);
 
         spinner=(Spinner) findViewById(R.id.spinner);
         ArrayAdapter adapter=new ArrayAdapter(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item,listOfOffers);
@@ -45,12 +44,20 @@ public class ShowApplicants extends AppCompatActivity {
         spinner.setAdapter(adapter);
 
 
+        /*listOfApplicants=new ArrayList<>();
+        applicantsAdapter=new AllApplicantsRecyclerViewAdapter(getApplicationContext(),listOfApplicants,username);
+        recyclerView.setAdapter(applicantsAdapter);*/
+
+
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
-                listOfApplicants=database.showApplicants(Integer.parseInt(spinner.getSelectedItem().toString()));
+                int JobId=Integer.parseInt(spinner.getSelectedItem().toString());
+                listOfApplicants=database.showApplicants(JobId);
+                applicantsAdapter=new AllApplicantsRecyclerViewAdapter(getApplicationContext(),listOfApplicants,username,JobId);
+                recyclerView.setAdapter(applicantsAdapter);
 
             }
 
