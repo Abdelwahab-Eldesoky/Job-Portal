@@ -26,12 +26,12 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/btnShowApplicants"
             android:layout_width="340dp"
             android:layout_height="50dp"
             android:layout_marginTop="36dp"
             android:background="@drawable/right_rounded"
-            android:text="Show Application History"
+            android:text="Show Applicants"
             android:textSize="17.5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -71,7 +71,7 @@
             android:layout_height="155dp"
             android:fontFamily="@font/bebas_regular"
             android:gravity="center"
-            android:text="Welcome\nSeeker"
+            android:text="Welcome\nRecruiter"
             android:textColor="#00BFFF"
             android:textSize="140px"
             app:layout_constraintBottom_toBottomOf="parent"

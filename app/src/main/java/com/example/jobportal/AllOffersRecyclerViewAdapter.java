@@ -12,12 +12,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
+public class AllOffersRecyclerViewAdapter extends RecyclerView.Adapter<AllOffersRecyclerViewAdapter.MyViewHolder> {
     Context context;
     List<jobVacancy> list;
     String username;
 
-    public RecyclerViewAdapter(Context context, List<jobVacancy> list,String username) {
+    public AllOffersRecyclerViewAdapter(Context context, List<jobVacancy> list, String username) {
         this.context = context;
         this.list = list;
         this.username=username;
@@ -25,13 +25,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @NonNull
     @Override
-    public RecyclerViewAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public AllOffersRecyclerViewAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.single_view_item, parent, false);
         return new MyViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerViewAdapter.MyViewHolder holder,final int position) {
+    public void onBindViewHolder(@NonNull AllOffersRecyclerViewAdapter.MyViewHolder holder, final int position) {
         int pos=position;
         String tmp = list.get(position).getCompName()+" - "+list.get(position).getCompAddress();
         holder.jobName.setText(list.get(position).getTittle());

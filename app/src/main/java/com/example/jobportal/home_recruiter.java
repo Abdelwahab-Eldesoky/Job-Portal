@@ -17,16 +17,25 @@ public class home_recruiter extends AppCompatActivity {
         String username=intent.getStringExtra("userName");
         System.out.println("home Recruiter "+username);
 
-        Button addVacancy=(Button) findViewById(R.id.add_btn);
+        Button addVacancyBtn=(Button) findViewById(R.id.add_btn);
+        Button showApplicantsBtn=(Button) findViewById(R.id.btnShowApplicants);
 
-        addVacancy.setOnClickListener(new View.OnClickListener() {
+        addVacancyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("home rec+ "+username);
                 Intent i = new Intent(home_recruiter.this,AddVacancy.class);
                 i.putExtra("userName",username);
                 startActivity(i);
 
+            }
+        });
+
+        showApplicantsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(home_recruiter.this,ShowApplicants.class);
+                i.putExtra("userName",username);
+                startActivity(i);
             }
         });
     }
