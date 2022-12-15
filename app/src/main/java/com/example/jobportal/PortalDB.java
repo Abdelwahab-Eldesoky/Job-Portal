@@ -225,6 +225,21 @@ public class PortalDB extends SQLiteOpenHelper {
 
         return applicants;
     }
+    public ArrayList<Integer> showJobs (String RecruiterUsername){
+        PortalDb=getReadableDatabase();
+        Cursor c=PortalDb.rawQuery("select vacancyID from jobvacancy  where RecruiterUsername=?   ",new String[]{RecruiterUsername});
+        if(c!=null)
+        {
+            c.moveToFirst();
+        }
+        ArrayList<Integer>jobIdList=new ArrayList<>();
+        while(!c.isAfterLast())
+        {
+            jobIdList.add(Integer.parseInt(c.getString(0)));
+        }
+        return jobIdList;
+    }
+
 
 
     @Override
