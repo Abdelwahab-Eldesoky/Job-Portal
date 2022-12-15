@@ -3,6 +3,8 @@ package com.example.jobportal;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class SingleOfferDetails extends AppCompatActivity {
@@ -21,9 +23,13 @@ public class SingleOfferDetails extends AppCompatActivity {
         TextView recruiterName = (TextView) findViewById(R.id.lblRecruiterName);
         TextView yearsOfExperience = (TextView) findViewById(R.id.lblYearsOfExperience);
 
+        Button apply=(Button) findViewById(R.id.apply_btn);
+        final PortalDB database=new PortalDB(this);
+
         int position = getIntent().getIntExtra("position", 0);
 
         String username=getIntent().getStringExtra("username");
+        System.out.println("single offer "+username);
 
         String formatCompAndAdress = AvailableJobOffers.list.get(position).getCompName() + " - " + AvailableJobOffers.list.get(position).getCompAddress();
         String formatYearsOfExp=String.valueOf(AvailableJobOffers.list.get(position).getExpNeeded())+" Years";
@@ -37,6 +43,13 @@ public class SingleOfferDetails extends AppCompatActivity {
         yearsOfExperience.setText(formatYearsOfExp);
 
         //AvailableJobOffers.list.get(position).getVacancyID()
+        apply.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                database.addApplication(username,AvailableJobOffers.list.get(position).getVacancyID());
+                database.showApplicants(AvailableJobOffers.list.get(position).getVacancyID());
+            }
+        });
 
     }
 }

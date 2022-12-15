@@ -17,7 +17,7 @@ public class PortalDB extends SQLiteOpenHelper {
     private static String databaseName="PortalDb";
     SQLiteDatabase PortalDb;
     public PortalDB(@Nullable Context context) {
-        super(context, databaseName, null, 7);
+        super(context, databaseName, null, 9);
     }
 
 
@@ -31,7 +31,7 @@ public class PortalDB extends SQLiteOpenHelper {
         db.execSQL("Create table jobVacancy(vacancyID integer primary key  , tittle text not null , jobType text not null , expNeeded integer, compName text ,compMail text, compAddress text,jobDescription text,RecruiterUsername text,Foreign key(RecruiterUsername) References Recruiter(UserName))");
 
 
-        db.execSQL("create table applications(SeekerSSN integer,JobID integer,Foreign key(SeekerSSN) References jobSeeker(SSN) , Foreign key(JobID) References JobVacancy(vacancyID) )");
+        db.execSQL("create table applications(SeekerUsername text,JobID integer,Foreign key(SeekerUsername) References jobSeeker(UserName) , Foreign key(JobID) References JobVacancy(vacancyID),primary key(SeekerUsername,JobID))");
 
     }
     public void addSeeker(jobSeeker seek){
@@ -78,6 +78,15 @@ public class PortalDB extends SQLiteOpenHelper {
         row.put("jobDescription",vacancy.getDescription());
         PortalDb=getWritableDatabase();
         PortalDb.insert("jobVacancy",null,row);
+        PortalDb.close();
+    }
+    public void addApplication(String seekUsername , int jobId)
+    {
+        ContentValues row=new ContentValues();
+        row.put("SeekerUsername",seekUsername);
+        row.put("JobID",jobId);
+        PortalDb=getWritableDatabase();
+        PortalDb.insert("applications",null,row);
         PortalDb.close();
     }
 
@@ -144,7 +153,6 @@ public class PortalDB extends SQLiteOpenHelper {
             c.moveToFirst();
         }
         for(int i =0;i<c.getCount();i++){
-            System.out.println(c.getCount());
             jobVacancy vacancy=new jobVacancy();
             vacancy.setVacancyID(Integer.parseInt(c.getString(c.getColumnIndex("vacancyID"))));
             vacancy.setCompMail(c.getString(c.getColumnIndex("compMail")));
@@ -158,21 +166,6 @@ public class PortalDB extends SQLiteOpenHelper {
             vacancies.add(vacancy);
             c.moveToNext();
         }
-        for(int i =0;i<vacancies.size();i++){
-            System.out.println("size "+vacancies.size());
-            System.out.println(" id "+vacancies.get(i).getVacancyID());
-            System.out.println("mail "+vacancies.get(i).getCompMail());
-            System.out.println("rec "+vacancies.get(i).getRecruiterName());
-            System.out.println("name "+vacancies.get(i).getCompName());
-            System.out.println("title "+vacancies.get(i).getTittle());
-            System.out.println(vacancies.get(i).getJobType());
-            System.out.println(vacancies.get(i).getCompAddress());
-            System.out.println(vacancies.get(i).getExpNeeded());
-            System.out.println(vacancies.get(i).getDescription());
-            System.out.println("================================================================");
-
-        }
-
         System.out.println("count= "+c.getCount());
         System.out.println("test "+(c.getColumnIndex("RecruiterUsername")));
         PortalDb.close();
@@ -202,6 +195,37 @@ public class PortalDB extends SQLiteOpenHelper {
         return vacancy;
 
     }
+    @SuppressLint("Range")
+    public ArrayList<jobSeeker> showApplicants(int jobId)
+    {
+        PortalDb=getReadableDatabase();
+        Cursor c=PortalDb.rawQuery("select * from jobSeeker Inner join applications on jobSeeker.UserName=SeekerUsername where JobID=?   ",new String[]{String.valueOf(jobId)});
+        if(c!=null)
+        {
+            c.moveToFirst();
+        }
+        System.out.println("test test " + c.getCount());
+        ArrayList<jobSeeker>applicants=new ArrayList<>();
+        while(!c.isAfterLast()){
+            jobSeeker seeker=new jobSeeker();
+            seeker.setUsername(c.getString(c.getColumnIndex("UserName")));
+            seeker.setName(c.getString(c.getColumnIndex("name")));
+            seeker.setPhoneNumber(c.getString(c.getColumnIndex("phone")));
+            seeker.setGender(c.getString(c.getColumnIndex("gender")));
+            seeker.setPassword(c.getString(c.getColumnIndex("password")));
+            seeker.setMail(c.getString(c.getColumnIndex("mail")));
+            seeker.setMajor(c.getString(c.getColumnIndex("major")));
+            seeker.setUniName(c.getString(c.getColumnIndex("uniName")));
+            seeker.setGradYear(Integer.parseInt(c.getString(c.getColumnIndex("gradYear"))));
+            seeker.setGradState(c.getString(c.getColumnIndex("gradState")));
+            seeker.setAddress(c.getString(c.getColumnIndex("address")));
+            seeker.setYearsOfExp(Integer.parseInt(c.getString(c.getColumnIndex("yearsOfExp"))));
+            applicants.add(seeker);
+        }
+
+        return applicants;
+    }
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1){

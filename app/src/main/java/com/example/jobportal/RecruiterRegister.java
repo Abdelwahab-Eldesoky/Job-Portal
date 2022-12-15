@@ -30,7 +30,7 @@ public class RecruiterRegister extends AppCompatActivity {
                 Recruiter recruiter = new Recruiter();
                 recruiter.Register(database,name.getText().toString(),username.getText().toString(),password.getText().toString());
                 Intent intent=new Intent(RecruiterRegister.this,home_recruiter.class);
-                intent.putExtra("UserName",username.getText().toString());
+                intent.putExtra("userName",username.getText().toString());
                 System.out.println("After Registery "+ username.getText().toString());
                 startActivity(intent);
 
