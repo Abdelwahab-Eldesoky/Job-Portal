@@ -16,7 +16,6 @@ import java.util.HashMap;
 public class PortalDB extends SQLiteOpenHelper {
     private static String databaseName = "PortalDb";
     SQLiteDatabase PortalDb;
-
     public PortalDB(@Nullable Context context) {
         super(context, databaseName, null, 10);
     }
@@ -33,7 +32,6 @@ public class PortalDB extends SQLiteOpenHelper {
 
 
         db.execSQL("create table applications(SeekerUsername text,ApplicationState text,JobID integer,Foreign key(SeekerUsername) References jobSeeker(UserName) , Foreign key(JobID) References JobVacancy(vacancyID),primary key(SeekerUsername,JobID))");
-
     }
 
     public void setState(String username, String status, int jobID) {
@@ -255,7 +253,14 @@ public class PortalDB extends SQLiteOpenHelper {
         PortalDb.close();
         return jobIdList;
     }
-
+    public Cursor showHistory(String username){
+        PortalDb = getReadableDatabase();
+        Cursor c = PortalDb.rawQuery("select jobVacancy.tittle ,applications.applicationState from jobVacancy inner join applications on SeekerUsername=?", new String[]{username});
+        if (c != null) {
+            c.moveToFirst();
+        }
+        return c;
+    }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
