@@ -38,6 +38,8 @@ public class PortalDB extends SQLiteOpenHelper {
     }
 
     public void setState(String username, String status, int jobID) {
+        System.out.println("State "+ status);
+        System.out.println("username "+username);
         ContentValues contentValues = new ContentValues();
         contentValues.put("ApplicationState", status);
         PortalDb = getReadableDatabase();
@@ -94,6 +96,7 @@ public class PortalDB extends SQLiteOpenHelper {
     }
 
     public void addApplication(String seekUsername, int jobId) {
+
         ContentValues row = new ContentValues();
         row.put("SeekerUsername", seekUsername);
         row.put("JobID", jobId);
@@ -260,7 +263,7 @@ public class PortalDB extends SQLiteOpenHelper {
     public List<Pair<String, String>> showHistory(String username) {
         PortalDb = getReadableDatabase();
         List<Pair<String, String>> listOfHistory = new ArrayList<>();
-        Cursor c = PortalDb.rawQuery("select distinct jobVacancy.tittle ,applications.applicationState from jobVacancy inner join applications on SeekerUsername=?", new String[]{username});
+        Cursor c = PortalDb.rawQuery("select distinct jobVacancy.tittle ,applications.applicationState from jobVacancy inner join applications on SeekerUsername=? and  jobVacancy.vacancyID=applications.JobID", new String[]{username});
         if (c != null) {
             c.moveToFirst();
         }
