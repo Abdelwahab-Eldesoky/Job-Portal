@@ -39,5 +39,14 @@ public class HomeSeeker extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        seeApplications.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(HomeSeeker.this,ShowApplicationHistory.class);
+                i.putExtra("userName",username);
+                startActivity(i);
+            }
+        });
     }
 }

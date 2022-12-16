@@ -6,16 +6,19 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Pair;
 import android.widget.EditText;
 
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class PortalDB extends SQLiteOpenHelper {
     private static String databaseName = "PortalDb";
     SQLiteDatabase PortalDb;
+
     public PortalDB(@Nullable Context context) {
         super(context, databaseName, null, 10);
     }
@@ -210,7 +213,7 @@ public class PortalDB extends SQLiteOpenHelper {
     @SuppressLint("Range")
     public ArrayList<jobSeeker> showApplicants(int jobId) {
         PortalDb = getReadableDatabase();
-        Cursor c = PortalDb.rawQuery("select * from jobSeeker Inner join applications on jobSeeker.UserName=SeekerUsername where JobID=? and ApplicationState=?  ", new String[]{String.valueOf(jobId),"Pending"});
+        Cursor c = PortalDb.rawQuery("select * from jobSeeker Inner join applications on jobSeeker.UserName=SeekerUsername where JobID=? and ApplicationState=?  ", new String[]{String.valueOf(jobId), "Pending"});
         if (c != null) {
             c.moveToFirst();
         }
@@ -253,14 +256,20 @@ public class PortalDB extends SQLiteOpenHelper {
         PortalDb.close();
         return jobIdList;
     }
-    public Cursor showHistory(String username){
+
+    public List<Pair<String, String>> showHistory(String username) {
         PortalDb = getReadableDatabase();
-        Cursor c = PortalDb.rawQuery("select jobVacancy.tittle ,applications.applicationState from jobVacancy inner join applications on SeekerUsername=?", new String[]{username});
+        List<Pair<String, String>> listOfHistory = new ArrayList<>();
+        Cursor c = PortalDb.rawQuery("select distinct jobVacancy.tittle ,applications.applicationState from jobVacancy inner join applications on SeekerUsername=?", new String[]{username});
         if (c != null) {
             c.moveToFirst();
         }
+        while (!c.isAfterLast()) {
+            listOfHistory.add(new Pair<String, String>(c.getString(0), c.getString(1)));
+            c.moveToNext();
+        }
         PortalDb.close();
-        return c;
+        return listOfHistory;
     }
 
     @Override
