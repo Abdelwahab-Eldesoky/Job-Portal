@@ -4,52 +4,125 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/back2"
     tools:context=".RecruiterRegister">
 
-    <EditText
-        android:id="@+id/passwordTxt"
-        android:layout_width="282dp"
-        android:layout_height="53dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="84dp"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/usernameTxt" />
 
-    <Button
-        android:id="@+id/Register_btn"
-        android:layout_width="177dp"
-        android:layout_height="58dp"
-        android:layout_marginBottom="128dp"
-        android:text="Button"
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="361dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="376dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/lblName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="25dp"
+            android:text="Name"
+            android:textColor="@color/white"
+            android:textSize="50px" />
+
+        <EditText
+            android:id="@+id/txtName"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:drawableStart="@drawable/person_cyan"
+            android:drawableLeft="@drawable/person_cyan"
+            android:drawablePadding="7dp"
+            android:ems="10"
+            android:hint="Enter Your Name"
+            android:inputType="text"
+            android:textColor="@color/white"
+            android:textColorHint="#C0C0C0" />
+
+        <TextView
+            android:id="@+id/lblUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="25dp"
+            android:text="Userame"
+            android:textColor="@color/white"
+            android:textSize="50px" />
+
+        <EditText
+            android:id="@+id/txtUsername"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:drawableStart="@drawable/person_outlined"
+            android:drawableLeft="@drawable/person_outlined"
+            android:drawablePadding="7dp"
+            android:ems="10"
+            android:hint="Enter Your Username"
+            android:inputType="text"
+            android:textColor="@color/white"
+            android:textColorHint="#C0C0C0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtName"
+            app:layout_constraintVertical_bias="0.001" />
+
+        <TextView
+            android:id="@+id/lblPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="25dp"
+            android:text="Password"
+            android:textColor="@color/white"
+            android:textSize="50px" />
+
+        <EditText
+            android:id="@+id/txtPassword"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:drawableStart="@drawable/lock_cyan"
+            android:drawableLeft="@drawable/lock_cyan"
+            android:drawablePadding="7dp"
+            android:ems="10"
+            android:hint="Enter Your Password"
+            android:inputType="textPassword"
+            android:textColor="@color/white"
+            android:textColorHint="#C0C0C0" />
+
+        <Button
+            android:id="@+id/btnRegister"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/rounded"
+            android:outlineAmbientShadowColor="#00BFFF"
+            android:outlineSpotShadowColor="#00BFFF"
+            android:text="Register" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign Up to Our Portal"
+        android:fontFamily="@font/bebas_regular"
+        android:textSize="40dp"
+        android:textColor="#00BFFF"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/txt_Name"
-        android:layout_width="282dp"
-        android:layout_height="53dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="92dp"
-        android:ems="10"
-        android:hint="Name"
-        android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/usernameTxt"
-        android:layout_width="282dp"
-        android:layout_height="53dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="88dp"
-        android:ems="10"
-        android:hint="UserName"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_Name" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.366" />
 </androidx.constraintlayout.widget.ConstraintLayout>

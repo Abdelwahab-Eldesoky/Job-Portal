@@ -14,16 +14,16 @@ public class RecruiterRegister extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recruiter_register);
-        EditText name =(EditText) findViewById(R.id.txt_Name);
-        EditText username =(EditText) findViewById(R.id.usernameTxt);
-        EditText password =(EditText) findViewById(R.id.passwordTxt);
+        EditText name =(EditText) findViewById(R.id.txtName);
+        EditText username =(EditText) findViewById(R.id.txtUsername);
+        EditText password =(EditText) findViewById(R.id.txtPassword);
 
         final PortalDB database=new PortalDB(this);
 
         Intent intent=getIntent();
         intent.getStringExtra("UserName");
 
-        Button register=(Button) findViewById(R.id.Register_btn);
+        Button register=(Button) findViewById(R.id.btnRegister);
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

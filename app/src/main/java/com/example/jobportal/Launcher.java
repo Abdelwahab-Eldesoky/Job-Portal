@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -15,8 +16,8 @@ public class Launcher extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_launcher);
-        Button seeker=(Button) findViewById(R.id.SeekerBtn);
-        Button recruiter=(Button) findViewById(R.id.recruiterBtn);
+        TextView seeker=(TextView) findViewById(R.id.lblSeeker);
+        TextView recruiter=(TextView) findViewById(R.id.lblRecruiter);
 
         seeker.setOnClickListener(new View.OnClickListener() {
             @Override

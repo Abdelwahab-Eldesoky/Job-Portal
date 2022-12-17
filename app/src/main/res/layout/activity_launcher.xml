@@ -4,26 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/launcher"
     tools:context=".Launcher">
 
-    <Button
-        android:id="@+id/SeekerBtn"
-        android:layout_width="138dp"
-        android:layout_height="108dp"
-        android:layout_marginTop="204dp"
-        android:text="Button"
+    <TextView
+        android:id="@+id/lblSeeker"
+        android:layout_width="180dp"
+        android:layout_height="280dp"
+        android:fontFamily="@font/bebas_regular"
+        android:gravity="center"
+        android:text="Seeker"
+        android:textColor="@color/white"
+        android:textSize="65dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.122"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.203" />
 
-    <Button
-        android:id="@+id/recruiterBtn"
-        android:layout_width="168dp"
-        android:layout_height="93dp"
-        android:layout_marginTop="68dp"
-        android:text="Button"
+    <TextView
+        android:id="@+id/lblRecruiter"
+        android:layout_width="220dp"
+        android:layout_height="280dp"
+        android:fontFamily="@font/bebas_regular"
+        android:gravity="center"
+        android:text="Recruiter"
+        android:textColor="@color/white"
+        android:textSize="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.907"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SeekerBtn" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.794" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

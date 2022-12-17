@@ -1,134 +1,234 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/JobType_rdbGroup"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AddVacancy">
 
-    <EditText
-        android:id="@+id/job_Id_txt"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:ems="10"
-        android:hint="id"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout5"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout5">
 
-    <EditText
-        android:id="@+id/txtCompMail2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:ems="10"
-        android:hint="Company e-mail"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtCompName" />
-
-    <EditText
-        android:id="@+id/descriptionTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:hint="Job Description"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addressTxt2" />
-
-    <EditText
-        android:id="@+id/addressTxt2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="Company Address"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtCompMail2" />
-
-    <EditText
-        android:id="@+id/job_title_txt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:ems="10"
-        android:hint="title"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/job_Id_txt" />
-
-    <RadioGroup
-        android:id="@+id/radioGroup"
-        android:layout_width="253dp"
-        android:layout_height="104dp"
-        app:layout_constraintBottom_toTopOf="@+id/txtExperienceNeeded"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/job_title_txt"
-        app:layout_constraintVertical_bias="0.534">
-
-        <RadioButton
-            android:id="@+id/fullTime_rdb"
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Full Time" />
+            android:fontFamily="@font/bebas_regular"
+            android:text="Add New Job Offer"
+            android:textColor="#6200EE"
+            android:textSize="40dp"
+            android:layout_margin="30dp"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <RadioButton
-            android:id="@+id/partTime_rdb"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:id="@+id/linearLayout5"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Part Time" />
-    </RadioGroup>
+            android:layout_margin="20dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-    <EditText
-        android:id="@+id/txtExperienceNeeded"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="17dp"
-        android:ems="10"
-        android:hint="Experience Needed"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+            <TextView
+                android:id="@+id/lblJobId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="25dp"
+                android:text="Job Id:"
+                android:textColor="#00Bfff"
+                android:textSize="20dp"
+                android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/txtCompName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:ems="10"
-        android:hint="Company Name"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtExperienceNeeded" />
+            <EditText
+                android:id="@+id/job_Id_txt"
+                android:layout_width="280dp"
+                android:layout_height="45dp"
+                android:ems="10"
+                android:hint="id"
+                android:inputType="number"
+                android:textColor="#6200EE" />
 
-    <Button
-        android:id="@+id/addVacancy_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:text="Add Vacancy"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/descriptionTxt" />
+            <TextView
+                android:id="@+id/lblJobTittle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="25dp"
+                android:text="Job Tittle:"
+                android:textColor="#00Bfff"
+                android:textSize="20dp"
+                android:textStyle="bold" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <EditText
+                android:id="@+id/job_title_txt"
+                android:layout_width="280dp"
+                android:layout_height="45dp"
+                android:ems="10"
+                android:hint="Title"
+                android:inputType="textPersonName"
+                android:textColor="#6200EE" />
+
+            <TextView
+                android:id="@+id/lblJobDesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="25dp"
+                android:text="Job Description:"
+                android:textColor="#00Bfff"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/descriptionTxt"
+                android:layout_width="280dp"
+                android:layout_height="45dp"
+                android:ems="10"
+                android:hint="Job Description"
+                android:inputType="textPersonName"
+                android:textColor="#6200EE" />
+
+            <TextView
+                android:id="@+id/lblJobType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="25dp"
+                android:text="Job Type:"
+                android:textColor="#00Bfff"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="253dp"
+                android:layout_height="104dp"
+                app:layout_constraintBottom_toTopOf="@+id/txtExperienceNeeded"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/job_title_txt"
+                app:layout_constraintVertical_bias="0.534">
+
+                <RadioButton
+                    android:id="@+id/fullTime_rdb"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Full Time"
+                    android:textColor="#6200EE"
+                    android:textSize="19dp" />
+
+                <RadioButton
+                    android:id="@+id/partTime_rdb"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Part Time"
+                    android:textColor="#6200EE"
+                    android:textSize="19dp" />
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/lblExpNeeded"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="25dp"
+                android:text="Experience Needed:"
+                android:textColor="#00Bfff"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/txtExperienceNeeded"
+                android:layout_width="280dp"
+                android:layout_height="45dp"
+                android:ems="10"
+                android:hint="Experience Needed"
+                android:inputType="number"
+                android:textColor="#6200EE" />
+
+            <TextView
+                android:id="@+id/lblCompName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="25dp"
+                android:text="Company Name:"
+                android:textColor="#00Bfff"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/txtCompName"
+                android:layout_width="280dp"
+                android:layout_height="45dp"
+                android:ems="10"
+                android:hint="Company Name"
+                android:inputType="textPersonName"
+                android:minHeight="48dp" />
+
+            <TextView
+                android:id="@+id/lblCompEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="25dp"
+                android:text="Company E-mail:"
+                android:textColor="#00Bfff"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/txtCompMail2"
+                android:layout_width="280dp"
+                android:layout_height="45dp"
+                android:ems="10"
+                android:hint="Company e-mail"
+                android:inputType="textPersonName"
+                android:textColor="#6200EE" />
+
+
+            <TextView
+                android:id="@+id/lblCompAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="25dp"
+                android:text="Company Address:"
+                android:textColor="#00Bfff"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/addressTxt2"
+                android:layout_width="280dp"
+                android:layout_height="45dp"
+                android:ems="10"
+                android:hint="Company Address"
+                android:inputType="textPersonName"
+                android:textColor="#6200EE" />
+
+            <Button
+                android:id="@+id/addVacancy_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="48dp"
+                android:layout_marginBottom="25dp"
+                android:background="@drawable/rounded"
+                android:text="Add Vacancy" />
+
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>
