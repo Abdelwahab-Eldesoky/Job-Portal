@@ -27,7 +27,7 @@
             android:id="@+id/lblName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="25dp"
             android:text="Name"
             android:textColor="@color/white"
@@ -44,13 +44,15 @@
             android:hint="Enter Your Name"
             android:inputType="text"
             android:textColor="@color/white"
-            android:textColorHint="#C0C0C0" />
+            android:textColorHint="#C0C0C0"
+            android:background="@drawable/rounded_edit_text_cyan"
+            android:layout_marginTop="8dp"/>
 
         <TextView
             android:id="@+id/lblUsername"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="25dp"
             android:text="Userame"
             android:textColor="@color/white"
@@ -68,6 +70,8 @@
             android:inputType="text"
             android:textColor="@color/white"
             android:textColorHint="#C0C0C0"
+            android:background="@drawable/rounded_edit_text_cyan"
+            android:layout_marginTop="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.494"
@@ -79,7 +83,7 @@
             android:id="@+id/lblPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="25dp"
             android:text="Password"
             android:textColor="@color/white"
@@ -96,7 +100,9 @@
             android:hint="Enter Your Password"
             android:inputType="textPassword"
             android:textColor="@color/white"
-            android:textColorHint="#C0C0C0" />
+            android:textColorHint="#C0C0C0"
+            android:background="@drawable/rounded_edit_text_cyan"
+            android:layout_marginTop="8dp"/>
 
         <Button
             android:id="@+id/btnRegister"
