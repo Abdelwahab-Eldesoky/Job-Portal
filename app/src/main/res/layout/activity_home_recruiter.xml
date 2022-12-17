@@ -66,7 +66,7 @@
             tools:ignore="SpeakableTextPresentCheck" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/txtWelcomRecruiter"
             android:layout_width="325dp"
             android:layout_height="155dp"
             android:fontFamily="@font/bebas_regular"
@@ -76,9 +76,10 @@
             android:textSize="140px"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.662"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.128" />
+            app:layout_constraintVertical_bias="0.159" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class home_recruiter extends AppCompatActivity {
 
@@ -19,6 +20,9 @@ public class home_recruiter extends AppCompatActivity {
 
         Button addVacancyBtn=(Button) findViewById(R.id.add_btn);
         Button showApplicantsBtn=(Button) findViewById(R.id.btnShowApplicants);
+        TextView welcomeRecruiter=(TextView)findViewById(R.id.txtWelcomRecruiter);
+        welcomeRecruiter.setText("Welcome "+username);
+
 
         addVacancyBtn.setOnClickListener(new View.OnClickListener() {
             @Override

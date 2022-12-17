@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 public class AddVacancy extends AppCompatActivity {
 
@@ -51,10 +52,10 @@ public class AddVacancy extends AppCompatActivity {
                 System.out.println("recruiterName is "+ vacancy.getRecruiterName());
                 database.addVacancy(vacancy);
                 database.ShowAllVacancies();
+                Toast.makeText(getApplicationContext(),"Application added Successfully",Toast.LENGTH_LONG).show();
+
             }
         });
-
-
 
     }
 }

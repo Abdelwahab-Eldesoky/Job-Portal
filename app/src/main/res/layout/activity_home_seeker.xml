@@ -61,7 +61,7 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/TxtWelcomSeeker"
         android:layout_width="325dp"
         android:layout_height="155dp"
         android:fontFamily="@font/bebas_regular"

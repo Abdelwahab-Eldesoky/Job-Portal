@@ -3,6 +3,7 @@ package com.example.jobportal;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -38,24 +39,14 @@ public class ResgisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String name=nametext.getText().toString();
-                System.out.println("3");
                 String userName=userNametext.getText().toString();
-                System.out.println("4");
                 String password=passwordtext.getText().toString();
-                System.out.println("5");
-                System.out.println("6");
                 String phone=phonetext.getText().toString();
-                System.out.println("7");
                 String mail=mailtext.getText().toString();
-                System.out.println("8");
                 String major=majortext.getText().toString();
-                System.out.println("9");
                 String university=universitytext.getText().toString();
-                System.out.println("10");
                 int gradYear=Integer.parseInt(gradYeartext.getText().toString());
-                System.out.println("11");
                 int YearsOfExperience=Integer.parseInt(YearsOfExperiencetext.getText().toString());
-                System.out.println("12");
                 String address=addresstext.getText().toString();
 
 
@@ -80,6 +71,9 @@ public class ResgisterActivity extends AppCompatActivity {
                 }
                 jobSeeker seeker=new jobSeeker();
                 seeker.Register(database,name, userName,password,phone,mail,major, university,gradYear, gradState,  address, gender,YearsOfExperience);
+                Intent i =new Intent(ResgisterActivity.this,HomeSeeker.class);
+                i.putExtra("userName",userName);
+                startActivity(i);
             }
         });
     }
