@@ -36,6 +36,7 @@ public class AllApplicantsRecyclerViewAdapter extends RecyclerView.Adapter<AllAp
 
     @Override
     public void onBindViewHolder(@NonNull AllApplicantsRecyclerViewAdapter.MyViewHolder holder, int position) {
+        int pos=position;
         String tmpStudy = list.get(position).getMajor() + " - " + list.get(position).getUniName();
         String tmpYoE = String.valueOf(list.get(position).getYearsOfExp()) + " Years";
         holder.seekerNameLbl.setText(list.get(position).getName());
@@ -50,14 +51,15 @@ public class AllApplicantsRecyclerViewAdapter extends RecyclerView.Adapter<AllAp
         holder.acceptBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                database.setState(username,"Accepted",jobID);
+                database.setState(list.get(pos).getUsername()
+                        ,"Accepted",jobID);
             }
         });
 
         holder.rejectBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                database.setState(username,"Rejected",jobID);
+                database.setState(list.get(pos).getUsername(),"Rejected",jobID);
             }
         });
 
