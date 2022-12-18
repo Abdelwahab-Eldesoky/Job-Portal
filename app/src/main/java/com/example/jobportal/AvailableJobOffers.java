@@ -37,7 +37,7 @@ public class AvailableJobOffers extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        list=database.ShowAllVacancies();
+        list=database.ShowAllVacancies(username);
 
         adapter=new AllOffersRecyclerViewAdapter(this,list,username);
         recyclerView.setAdapter(adapter);
