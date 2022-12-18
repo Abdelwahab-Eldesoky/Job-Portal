@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         EditText usernametext=(EditText)findViewById(R.id.editTextTextPersonName) ;
         EditText passwordtext=(EditText)findViewById(R.id.editTextTextPersonName2) ;
         Button login=(Button) findViewById(R.id.button);
+        Button tolauncherBtn=(Button) findViewById(R.id.btnToLauncher);
         final PortalDB database=new PortalDB(this);
         Intent intent = getIntent();
         String tableName=intent.getStringExtra("Table Name");
@@ -79,6 +80,14 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);}
                 }
 
+        });
+
+        tolauncherBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(MainActivity.this,Launcher.class);
+                startActivity(i);
+            }
         });
 
     }
