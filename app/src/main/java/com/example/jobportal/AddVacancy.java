@@ -51,8 +51,10 @@ public class AddVacancy extends AppCompatActivity {
 
                 System.out.println("recruiterName is "+ vacancy.getRecruiterName());
                 database.addVacancy(vacancy);
-                database.ShowAllVacancies();
                 Toast.makeText(getApplicationContext(),"Application added Successfully",Toast.LENGTH_LONG).show();
+                Intent i = new Intent(AddVacancy.this,home_recruiter.class);
+                i.putExtra("userName",UserName);
+                startActivity(i);
 
             }
         });

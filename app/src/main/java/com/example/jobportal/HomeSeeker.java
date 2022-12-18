@@ -15,7 +15,7 @@ public class HomeSeeker extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_seeker);
         Button userInfo=(Button) findViewById(R.id.button5);
-        Button back=(Button) findViewById(R.id.button6);
+        Button logoutBtn=(Button) findViewById(R.id.btnLogOut);
         Button showOffers=(Button) findViewById(R.id.add_btn);
         Button seeApplications=(Button) findViewById(R.id.button4);
         Intent intent=getIntent();
@@ -48,6 +48,14 @@ public class HomeSeeker extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i=new Intent(HomeSeeker.this,ShowApplicationHistory.class);
                 i.putExtra("userName",username);
+                startActivity(i);
+            }
+        });
+
+        logoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(HomeSeeker.this,Launcher.class);
                 startActivity(i);
             }
         });

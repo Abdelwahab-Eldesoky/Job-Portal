@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -35,6 +36,13 @@ public class ShowApplicants extends AppCompatActivity {
 
         username=getIntent().getStringExtra("userName");
         listOfOffers=database.showJobs(username);
+
+        if(listOfOffers.isEmpty()){
+            Toast.makeText(getApplicationContext(),"No Jobs Added",Toast.LENGTH_LONG).show();
+            Intent i = new Intent(ShowApplicants.this,home_recruiter.class);
+            i.putExtra("userName",username);
+            startActivity(i);
+        }
 
 
         spinner=(Spinner) findViewById(R.id.spinner);

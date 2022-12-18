@@ -205,6 +205,10 @@ public class UpdateSeekerInfo extends AppCompatActivity {
                 values.put("gradState",Graduate);
                 database.updateInformaation(username,values);
 
+                Intent i=new Intent(UpdateSeekerInfo.this,HomeSeeker.class);
+                i.putExtra("userName",username);
+                startActivity(i);
+
             }
         });
 

@@ -2,6 +2,7 @@ package com.example.jobportal;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -48,6 +49,12 @@ public class SingleOfferDetails extends AppCompatActivity {
             public void onClick(View v) {
                 database.addApplication(username,AvailableJobOffers.list.get(position).getVacancyID());
                 database.setState(username,"Pending",AvailableJobOffers.list.get(position).getVacancyID());
+
+
+                Intent i=new Intent(SingleOfferDetails.this,AvailableJobOffers.class);
+                i.putExtra("userName",username);
+                startActivity(i);
+
             }
         });
 
