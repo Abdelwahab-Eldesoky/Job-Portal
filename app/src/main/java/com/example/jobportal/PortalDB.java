@@ -263,12 +263,14 @@ public class PortalDB extends SQLiteOpenHelper {
     public List<Pair<String, String>> showHistory(String username) {
         PortalDb = getReadableDatabase();
         List<Pair<String, String>> listOfHistory = new ArrayList<>();
-        Cursor c = PortalDb.rawQuery("select distinct jobVacancy.tittle ,applications.applicationState from jobVacancy inner join applications on SeekerUsername=? and  jobVacancy.vacancyID=applications.JobID", new String[]{username});
+        String name;
+        Cursor c = PortalDb.rawQuery("select distinct jobVacancy.tittle,jobVacancy.compName ,applications.applicationState from jobVacancy inner join applications on SeekerUsername=? and  jobVacancy.vacancyID=applications.JobID", new String[]{username});
         if (c != null) {
             c.moveToFirst();
         }
         while (!c.isAfterLast()) {
-            listOfHistory.add(new Pair<String, String>(c.getString(0), c.getString(1)));
+            name=c.getString(0)+"\n"+c.getString(1);
+            listOfHistory.add(new Pair<String, String>(name, c.getString(2)));
             c.moveToNext();
         }
         PortalDb.close();
