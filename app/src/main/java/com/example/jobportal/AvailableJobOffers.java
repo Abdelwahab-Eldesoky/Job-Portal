@@ -4,10 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import java.util.ArrayList;
@@ -28,6 +31,7 @@ public class AvailableJobOffers extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_available_job_offers);
+        Button backBtn=(Button) findViewById(R.id.btnBackoffers);
 
         username=getIntent().getStringExtra("userName");
 
@@ -69,6 +73,14 @@ public class AvailableJobOffers extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {
 
+            }
+        });
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(AvailableJobOffers.this,HomeSeeker.class);
+                i.putExtra("userName",username);
+                startActivity(i);
             }
         });
 

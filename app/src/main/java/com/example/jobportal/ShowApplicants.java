@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.Toast;
@@ -36,6 +37,8 @@ public class ShowApplicants extends AppCompatActivity {
 
         username=getIntent().getStringExtra("userName");
         listOfOffers=database.showJobs(username);
+
+        Button backBtn=(Button) findViewById(R.id.backBtnApplicants);
 
         if(listOfOffers.isEmpty()){
             Toast.makeText(getApplicationContext(),"No Jobs Added",Toast.LENGTH_LONG).show();
@@ -76,6 +79,15 @@ public class ShowApplicants extends AppCompatActivity {
 
             }
         });
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(ShowApplicants.this,home_recruiter.class);
+                i.putExtra("userName",username);
+                startActivity(i);
+            }
+        });
+
 
 
 

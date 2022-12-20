@@ -30,7 +30,7 @@ public class SingleOfferDetails extends AppCompatActivity {
 
         int position = getIntent().getIntExtra("position", 0);
 
-        String username=getIntent().getStringExtra("username");
+        String username=getIntent().getStringExtra("userName");
         System.out.println("single offer "+username);
 
         String formatCompAndAdress = AvailableJobOffers.list.get(position).getCompName() + " - " + AvailableJobOffers.list.get(position).getCompAddress();
@@ -43,6 +43,8 @@ public class SingleOfferDetails extends AppCompatActivity {
         companyAndAddress.setText(formatCompAndAdress);
         recruiterName.setText(AvailableJobOffers.list.get(position).getRecruiterName());
         yearsOfExperience.setText(formatYearsOfExp);
+
+
 
         //AvailableJobOffers.list.get(position).getVacancyID()
         apply.setOnClickListener(new View.OnClickListener() {
@@ -57,6 +59,8 @@ public class SingleOfferDetails extends AppCompatActivity {
 
             }
         });
+
+
 
     }
 }

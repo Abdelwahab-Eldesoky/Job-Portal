@@ -11,6 +11,18 @@
         android:layout_height="match_parent"
         tools:context=".ResgisterActivity">
 
+        <Button
+            android:id="@+id/backBtnUpdateSeeker"
+            android:layout_width="43dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="16dp"
+            android:background="@drawable/back_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.023"
+            tools:ignore="SpeakableTextPresentCheck" />
+
         <EditText
             android:id="@+id/txtMajor"
             android:layout_width="240dp"

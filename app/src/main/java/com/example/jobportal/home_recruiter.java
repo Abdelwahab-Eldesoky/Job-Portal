@@ -18,6 +18,7 @@ public class home_recruiter extends AppCompatActivity {
         String username=intent.getStringExtra("userName");
         System.out.println("home Recruiter "+username);
 
+        Button logoutBtn=(Button) findViewById(R.id.btnLogOutrec);
         Button addVacancyBtn=(Button) findViewById(R.id.add_btn);
         Button showApplicantsBtn=(Button) findViewById(R.id.btnShowApplicants);
         TextView welcomeRecruiter=(TextView)findViewById(R.id.txtWelcomRecruiter);
@@ -38,6 +39,14 @@ public class home_recruiter extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(home_recruiter.this,ShowApplicants.class);
+                i.putExtra("userName",username);
+                startActivity(i);
+            }
+        });
+        logoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(home_recruiter.this,Launcher.class);
                 i.putExtra("userName",username);
                 startActivity(i);
             }

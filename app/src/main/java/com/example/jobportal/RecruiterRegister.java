@@ -19,6 +19,8 @@ public class RecruiterRegister extends AppCompatActivity {
         EditText username = (EditText) findViewById(R.id.txtUsername);
         EditText password = (EditText) findViewById(R.id.txtPassword);
 
+        Button backBtn=(Button) findViewById(R.id.backBtn);
+
         final PortalDB database = new PortalDB(this);
 
         Intent intent = getIntent();
@@ -43,6 +45,15 @@ public class RecruiterRegister extends AppCompatActivity {
 
             }
         });
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(RecruiterRegister.this,home_recruiter.class);
+                i.putExtra("userName",username.getText().toString());
+                startActivity(i);
+            }
+        });
+
 
     }
 }

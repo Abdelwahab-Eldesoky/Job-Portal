@@ -69,6 +69,8 @@ public class UpdateSeekerInfo extends AppCompatActivity {
         RadioGroup gradStateGrp = (RadioGroup) findViewById(R.id.grpGradState);
 
 
+        Button backBtn=(Button) findViewById(R.id.backBtnUpdateSeeker);
+
         RadioButton graduatedRdb = (RadioButton) findViewById(R.id.rdbGraduate);
         RadioButton underGradRdb = (RadioButton) findViewById(R.id.rdbUnderGrad);
         if(seeker.getGradState().equals("Graduated")){
@@ -211,6 +213,15 @@ public class UpdateSeekerInfo extends AppCompatActivity {
 
             }
         });
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(UpdateSeekerInfo.this,HomeSeeker.class);
+                i.putExtra("userName",username);
+                startActivity(i);
+            }
+        });
+
 
     }
 }

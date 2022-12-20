@@ -44,7 +44,7 @@ public class AllOffersRecyclerViewAdapter extends RecyclerView.Adapter<AllOffers
             public void onClick(View view) {
                 Intent intent= new Intent(context,SingleOfferDetails.class);
                 intent.putExtra("position",pos);
-                intent.putExtra("username",username);
+                intent.putExtra("userName",username);
                 context.startActivity(intent);
             }
         });

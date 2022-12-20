@@ -18,6 +18,7 @@ public class ResgisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resgister);
         PortalDB db=new PortalDB(this);
+        Button backBtn=(Button) findViewById(R.id.backBtnSeeker);
 
         Context cont=this;
         Button regesterBtn=(Button) findViewById(R.id.button);
@@ -83,5 +84,14 @@ public class ResgisterActivity extends AppCompatActivity {
                 }
             }
         });
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(ResgisterActivity.this,HomeSeeker.class);
+                i.putExtra("userName",userNametext.getText().toString());
+                startActivity(i);
+            }
+        });
+
     }
 }
