@@ -7,12 +7,12 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Pair;
-import android.widget.EditText;
+
 
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+
 import java.util.List;
 
 public class PortalDB extends SQLiteOpenHelper {
@@ -129,6 +129,7 @@ public class PortalDB extends SQLiteOpenHelper {
         seeker.setGradState(c.getString(c.getColumnIndex("gradState")));
         seeker.setGender(c.getString(c.getColumnIndex("gender")));
 
+        c.close();;
         PortalDb.close();
         return seeker;
     }
@@ -161,11 +162,11 @@ public class PortalDB extends SQLiteOpenHelper {
     }
 
     @SuppressLint("Range")
-    public ArrayList<jobVacancy> ShowAllVacancies() {
+    public ArrayList<jobVacancy> ShowAllVacancies(String username) {
 
         ArrayList<jobVacancy> vacancies = new ArrayList<>();
         PortalDb = getReadableDatabase();
-        Cursor c = PortalDb.query("jobVacancy", null, null, null, null, null, null);
+        Cursor c = PortalDb.rawQuery("select* from jobVacancy where not EXISTS (select SeekerUsername,JobID from applications where SeekerUsername=? and applications.JobID=jobVacancy.vacancyID)",new String[]{username});
         if (c != null) {
             c.moveToFirst();
         }
