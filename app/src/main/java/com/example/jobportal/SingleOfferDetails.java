@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class SingleOfferDetails extends AppCompatActivity {
 
@@ -49,8 +50,7 @@ public class SingleOfferDetails extends AppCompatActivity {
             public void onClick(View v) {
                 database.addApplication(username,AvailableJobOffers.list.get(position).getVacancyID());
                 database.setState(username,"Pending",AvailableJobOffers.list.get(position).getVacancyID());
-
-
+                Toast.makeText(getApplicationContext(),"Applied Successfully", Toast.LENGTH_LONG).show();
                 Intent i=new Intent(SingleOfferDetails.this,AvailableJobOffers.class);
                 i.putExtra("userName",username);
                 startActivity(i);

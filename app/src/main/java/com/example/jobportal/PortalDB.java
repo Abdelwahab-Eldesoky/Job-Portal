@@ -47,7 +47,14 @@ public class PortalDB extends SQLiteOpenHelper {
         PortalDb.close();
     }
 
-    public void addSeeker(jobSeeker seek) {
+    public Boolean addSeeker(jobSeeker seek) {
+
+        PortalDb = getReadableDatabase();
+        Cursor c=PortalDb.rawQuery("Select name from jobSeeker where UserName=? ",new String[]{seek.getUsername()});
+        if(c.getCount()>0){
+            return false;
+        }
+
         ContentValues row = new ContentValues();
         row.put("phone", seek.getPhoneNumber());
         row.put("UserName", seek.getUsername());
@@ -64,9 +71,15 @@ public class PortalDB extends SQLiteOpenHelper {
         PortalDb = getWritableDatabase();
         PortalDb.insert("jobSeeker", null, row);
         PortalDb.close();
+        return true;
     }
 
-    public void addRecruiter(Recruiter recruiter) {
+    public Boolean addRecruiter(Recruiter recruiter) {
+        PortalDb = getReadableDatabase();
+        Cursor c=PortalDb.rawQuery("Select name from Recruiter where UserName=? ",new String[]{recruiter.getUsername()});
+        if(c.getCount()>0){
+            return false;
+        }
         ContentValues row = new ContentValues();
 
         row.put("UserName", recruiter.getUsername());
@@ -76,6 +89,7 @@ public class PortalDB extends SQLiteOpenHelper {
         PortalDb = getWritableDatabase();
         PortalDb.insert("Recruiter", null, row);
         PortalDb.close();
+        return true;
     }
 
 
@@ -190,29 +204,6 @@ public class PortalDB extends SQLiteOpenHelper {
         return vacancies;
     }
 
-    @SuppressLint("Range")
-    public jobVacancy getVacancyInfo(int id) {
-
-        PortalDb = getReadableDatabase();
-        String[] rowdetails = {"jobDescription,RecruiterUsername,compAddress,compMail,compName,expNeeded,jobType,tittle"};
-        Cursor c = PortalDb.query("jobVacancy", rowdetails, "vacancyID=?", new String[]{String.valueOf(id)}, null, null, null);
-        if (c != null) {
-            c.moveToFirst();
-        }
-
-        jobVacancy vacancy = new jobVacancy();
-        vacancy.setVacancyID(id);
-        vacancy.setCompMail(c.getString(c.getColumnIndex("compMail")));
-        vacancy.setRecruiterName(c.getString(c.getColumnIndex("RecruiterUsername")));
-        vacancy.setCompName(c.getString(c.getColumnIndex("compName")));
-        vacancy.setTittle(c.getString(c.getColumnIndex("tittle")));
-        vacancy.setJobType(c.getString(c.getColumnIndex("jobType")));
-        vacancy.setCompAddress(c.getString(c.getColumnIndex("compAddress")));
-        vacancy.setExpNeeded(Integer.parseInt(c.getString(c.getColumnIndex("expNeeded"))));
-        vacancy.setDescription(c.getString(c.getColumnIndex("jobDescription")));
-        return vacancy;
-
-    }
 
     @SuppressLint("Range")
     public ArrayList<jobSeeker> showApplicants(int jobId) {

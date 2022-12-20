@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 public class ResgisterActivity extends AppCompatActivity {
 
@@ -69,11 +70,17 @@ public class ResgisterActivity extends AppCompatActivity {
                 else{
                     gradState="Undergraduate";
                 }
+                boolean exists;
                 jobSeeker seeker=new jobSeeker();
-                seeker.Register(database,name, userName,password,phone,mail,major, university,gradYear, gradState,  address, gender,YearsOfExperience);
-                Intent i =new Intent(ResgisterActivity.this,HomeSeeker.class);
-                i.putExtra("userName",userName);
-                startActivity(i);
+                exists=seeker.Register(database,name, userName,password,phone,mail,major, university,gradYear, gradState,  address, gender,YearsOfExperience);
+                if(exists){
+                    Toast.makeText(getApplicationContext(),"Registered successfully",Toast.LENGTH_LONG).show();
+                    Intent i =new Intent(ResgisterActivity.this,HomeSeeker.class);
+                    i.putExtra("userName",userName);
+                    startActivity(i);}
+                else{
+                    Toast.makeText(getApplicationContext(),"Username already exists", Toast.LENGTH_LONG).show();
+                }
             }
         });
     }

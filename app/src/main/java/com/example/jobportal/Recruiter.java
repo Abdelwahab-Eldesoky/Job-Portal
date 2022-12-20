@@ -6,12 +6,15 @@ public class Recruiter extends User{
 
     }
 
-    public void Register(PortalDB db,String name, String username, String password){
+    public Boolean Register(PortalDB db,String name, String username, String password){
       this.setName(name);
       this.setUsername(username);
       this.setPassword(password);
-      db.addRecruiter(this);
+      if(db.addRecruiter(this)){
+          return true;
+        }
 
+      return false;
     }
 
     /*public jobVacancy addVacancy(String tittle,String jobType,int expNeeded,String compName,String compMail,String compAddress){
