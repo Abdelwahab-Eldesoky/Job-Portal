@@ -4,8 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Pair;
+import android.view.View;
+import android.widget.Button;
 
 import java.util.List;
 
@@ -26,6 +29,7 @@ public class ShowApplicationHistory extends AppCompatActivity {
 
         username = getIntent().getStringExtra("userName");
 
+        Button backbtn=(Button) findViewById(R.id.btnBack);
         list = database.showHistory(username);
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView3);
@@ -34,6 +38,14 @@ public class ShowApplicationHistory extends AppCompatActivity {
         adapter=new ApplicationsHistoryRecyclerViewAdapter(this,list,username);
         recyclerView.setAdapter(adapter);
 
+        backbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(ShowApplicationHistory.this,HomeSeeker.class);
+                i.putExtra("userName",username);
+                startActivity(i);
+            }
+        });
 
     }
 }
