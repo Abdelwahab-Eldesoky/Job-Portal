@@ -1,13 +1,13 @@
 package com.example.jobportal;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class SingleOfferDetails extends AppCompatActivity {
 
@@ -25,16 +25,22 @@ public class SingleOfferDetails extends AppCompatActivity {
         TextView recruiterName = (TextView) findViewById(R.id.lblRecruiterName);
         TextView yearsOfExperience = (TextView) findViewById(R.id.lblYearsOfExperience);
 
-        Button apply=(Button) findViewById(R.id.apply_btn);
-        final PortalDB database=new PortalDB(this);
+        Button apply = (Button) findViewById(R.id.apply_btn);
+        final PortalDB database = new PortalDB(this);
 
-        int position = getIntent().getIntExtra("position", 0);
+        int position = 0;
 
-        String username=getIntent().getStringExtra("userName");
-        System.out.println("single offer "+username);
+        for (int i = 0; i < AvailableJobOffers.list.size(); i++) {
+            if (AvailableJobOffers.list.get(i).getVacancyID() == getIntent().getIntExtra("jobId", 0)) {
+                position = i;
+            }
+        }
+
+        String username = getIntent().getStringExtra("userName");
+        System.out.println("single offer " + username);
 
         String formatCompAndAdress = AvailableJobOffers.list.get(position).getCompName() + " - " + AvailableJobOffers.list.get(position).getCompAddress();
-        String formatYearsOfExp=String.valueOf(AvailableJobOffers.list.get(position).getExpNeeded())+" Years";
+        String formatYearsOfExp = String.valueOf(AvailableJobOffers.list.get(position).getExpNeeded()) + " Years";
         jobTittle.setText(AvailableJobOffers.list.get(position).getTittle());
         jobID.setText(String.valueOf(AvailableJobOffers.list.get(position).getVacancyID()));
         jobDesc.setText(AvailableJobOffers.list.get(position).getDescription());
@@ -45,21 +51,19 @@ public class SingleOfferDetails extends AppCompatActivity {
         yearsOfExperience.setText(formatYearsOfExp);
 
 
-
-        //AvailableJobOffers.list.get(position).getVacancyID()
+        int pos = position;
         apply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                database.addApplication(username,AvailableJobOffers.list.get(position).getVacancyID());
-                database.setApplicationState(username,"Pending",AvailableJobOffers.list.get(position).getVacancyID());
-                Toast.makeText(getApplicationContext(),"Applied Successfully", Toast.LENGTH_LONG).show();
-                Intent i=new Intent(SingleOfferDetails.this,AvailableJobOffers.class);
-                i.putExtra("userName",username);
+                database.addApplication(username, AvailableJobOffers.list.get(pos).getVacancyID());
+                database.setApplicationState(username, "Pending", AvailableJobOffers.list.get(pos).getVacancyID());
+                Toast.makeText(getApplicationContext(), "Applied Successfully", Toast.LENGTH_LONG).show();
+                Intent i = new Intent(SingleOfferDetails.this, AvailableJobOffers.class);
+                i.putExtra("userName", username);
                 startActivity(i);
 
             }
         });
-
 
 
     }

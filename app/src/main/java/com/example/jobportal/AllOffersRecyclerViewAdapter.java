@@ -43,8 +43,8 @@ public class AllOffersRecyclerViewAdapter extends RecyclerView.Adapter<AllOffers
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, SingleOfferDetails.class);
-                intent.putExtra("position", pos);
                 intent.putExtra("userName", username);
+                intent.putExtra("jobId", list.get(pos).getVacancyID());
                 context.startActivity(intent);
             }
         });
