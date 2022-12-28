@@ -29,20 +29,20 @@ public class ShowApplicationHistory extends AppCompatActivity {
 
         username = getIntent().getStringExtra("userName");
 
-        Button backbtn=(Button) findViewById(R.id.btnBack);
+        Button backbtn = (Button) findViewById(R.id.btnBack);
         list = database.showHistory(username);
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView3);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        adapter=new ApplicationsHistoryRecyclerViewAdapter(this,list,username);
+        adapter = new ApplicationsHistoryRecyclerViewAdapter(this, list, username);
         recyclerView.setAdapter(adapter);
 
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(ShowApplicationHistory.this,HomeSeeker.class);
-                i.putExtra("userName",username);
+                Intent i = new Intent(ShowApplicationHistory.this, HomeSeeker.class);
+                i.putExtra("userName", username);
                 startActivity(i);
             }
         });

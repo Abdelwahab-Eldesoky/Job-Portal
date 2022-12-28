@@ -1,7 +1,6 @@
 package com.example.jobportal;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +10,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -27,8 +25,8 @@ public class AllApplicantsRecyclerViewAdapter extends RecyclerView.Adapter<AllAp
         this.context = context;
         this.list = list;
         this.username = username;
-        this.jobID=jobID;
-        database=new PortalDB(this.context);
+        this.jobID = jobID;
+        database = new PortalDB(this.context);
     }
 
     @NonNull
@@ -40,7 +38,7 @@ public class AllApplicantsRecyclerViewAdapter extends RecyclerView.Adapter<AllAp
 
     @Override
     public void onBindViewHolder(@NonNull AllApplicantsRecyclerViewAdapter.MyViewHolder holder, int position) {
-        int pos=position;
+        int pos = position;
         String tmpStudy = list.get(position).getMajor() + " - " + list.get(position).getUniName();
         String tmpYoE = String.valueOf(list.get(position).getYearsOfExp()) + " Years";
         holder.seekerNameLbl.setText(list.get(position).getName());
@@ -55,23 +53,23 @@ public class AllApplicantsRecyclerViewAdapter extends RecyclerView.Adapter<AllAp
         holder.acceptBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                database.setState(list.get(pos).getUsername()
-                        ,"Accepted",jobID);
+                database.setApplicationState(list.get(pos).getUsername()
+                        , "Accepted", jobID);
                 holder.acceptBtn.setVisibility(View.INVISIBLE);
                 holder.rejectBtn.setVisibility(View.INVISIBLE);
                 holder.stateLbl.setText("Accepted");
-                holder.stateLbl.setTextColor(Color.rgb(0,255,0));
+                holder.stateLbl.setTextColor(Color.rgb(0, 255, 0));
             }
         });
 
         holder.rejectBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                database.setState(list.get(pos).getUsername(),"Rejected",jobID);
+                database.setApplicationState(list.get(pos).getUsername(), "Rejected", jobID);
                 holder.acceptBtn.setVisibility(View.INVISIBLE);
                 holder.rejectBtn.setVisibility(View.INVISIBLE);
                 holder.stateLbl.setText("Rejected");
-                holder.stateLbl.setTextColor(Color.rgb(255,0,0));
+                holder.stateLbl.setTextColor(Color.rgb(255, 0, 0));
             }
         });
 
@@ -83,7 +81,7 @@ public class AllApplicantsRecyclerViewAdapter extends RecyclerView.Adapter<AllAp
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView seekerNameLbl, studyLbl, gradYearLbl, gradStateLbl, yearsOfExpLbl, mailLbl, phoneLbl, genderLbl,stateLbl;
+        TextView seekerNameLbl, studyLbl, gradYearLbl, gradStateLbl, yearsOfExpLbl, mailLbl, phoneLbl, genderLbl, stateLbl;
         Button rejectBtn, acceptBtn;
         CardView myCard;
 
@@ -98,14 +96,12 @@ public class AllApplicantsRecyclerViewAdapter extends RecyclerView.Adapter<AllAp
             mailLbl = itemView.findViewById(R.id.lblMail);
             phoneLbl = itemView.findViewById(R.id.lblPhone);
             genderLbl = itemView.findViewById(R.id.lblGender);
-            stateLbl=itemView.findViewById(R.id.lblState);
+            stateLbl = itemView.findViewById(R.id.lblState);
 
             rejectBtn = itemView.findViewById(R.id.btnReject);
             acceptBtn = itemView.findViewById(R.id.btnAccept);
 
-            myCard=itemView.findViewById(R.id.myCardView);
-
-
+            myCard = itemView.findViewById(R.id.myCardView);
 
 
         }

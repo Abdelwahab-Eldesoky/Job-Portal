@@ -12,7 +12,7 @@ public class jobVacancy {
     private String recruiterName;
     public String description;
 
-    public jobVacancy(int vacancyID,String tittle, String jobType, int expNeeded, String compName, String compMail, String compAddress, String recruiterName,String description) {
+    public jobVacancy(int vacancyID, String tittle, String jobType, int expNeeded, String compName, String compMail, String compAddress, String recruiterName, String description) {
 
         this.tittle = tittle;
         this.jobType = jobType;
@@ -21,8 +21,8 @@ public class jobVacancy {
         this.compMail = compMail;
         this.compAddress = compAddress;
         this.recruiterName = recruiterName;
-        this.vacancyID=vacancyID;
-        this.description=description;
+        this.vacancyID = vacancyID;
+        this.description = description;
     }
 
     public jobVacancy() {

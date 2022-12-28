@@ -202,7 +202,6 @@ public class UpdateSeekerInfo extends AppCompatActivity {
                 ContentValues values=new ContentValues();
                 for(int i=0;i<tobeUpdated.size();i++){
                     values.put(tobeUpdated.get(i),boxes.get(i).getText().toString());
-                    System.out.println(tobeUpdated.get(i) + " "+boxes.get(i).getText().toString());
                 }
                 values.put("gradState",Graduate);
                 database.updateInformaation(username,values);

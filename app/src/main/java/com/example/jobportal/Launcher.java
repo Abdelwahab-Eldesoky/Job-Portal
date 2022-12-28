@@ -16,6 +16,7 @@ public class Launcher extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_launcher);
+
         TextView seeker=(TextView) findViewById(R.id.lblSeeker);
         TextView recruiter=(TextView) findViewById(R.id.lblRecruiter);
 

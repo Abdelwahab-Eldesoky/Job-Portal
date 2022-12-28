@@ -19,25 +19,22 @@ public class RecruiterRegister extends AppCompatActivity {
         EditText username = (EditText) findViewById(R.id.txtUsername);
         EditText password = (EditText) findViewById(R.id.txtPassword);
 
-        Button backBtn=(Button) findViewById(R.id.backBtn);
+        Button backBtn = (Button) findViewById(R.id.backBtn);
 
         final PortalDB database = new PortalDB(this);
 
-        Intent intent = getIntent();
-        intent.getStringExtra("UserName");
 
         Button register = (Button) findViewById(R.id.btnRegister);
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean exists;
+                boolean Success;
                 Recruiter recruiter = new Recruiter();
-                exists = recruiter.Register(database, name.getText().toString(), username.getText().toString(), password.getText().toString());
-                if (exists) {
+                Success = recruiter.Register(database, name.getText().toString(), username.getText().toString(), password.getText().toString());
+                if (Success) {
                     Toast.makeText(getApplicationContext(), "Registered Successfully", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(RecruiterRegister.this, home_recruiter.class);
                     intent.putExtra("userName", username.getText().toString());
-                    System.out.println("After Registery " + username.getText().toString());
                     startActivity(intent);
                 } else {
                     Toast.makeText(getApplicationContext(), "Username already exists", Toast.LENGTH_LONG).show();
@@ -48,8 +45,8 @@ public class RecruiterRegister extends AppCompatActivity {
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(RecruiterRegister.this,home_recruiter.class);
-                i.putExtra("userName",username.getText().toString());
+                Intent i = new Intent(RecruiterRegister.this, home_recruiter.class);
+                i.putExtra("userName", username.getText().toString());
                 startActivity(i);
             }
         });

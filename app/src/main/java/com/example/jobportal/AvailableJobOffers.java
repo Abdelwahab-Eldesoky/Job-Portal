@@ -22,7 +22,7 @@ public class AvailableJobOffers extends AppCompatActivity {
     RecyclerView recyclerView;
     public static List<jobVacancy> list;
     AllOffersRecyclerViewAdapter adapter;
-    final PortalDB database=new PortalDB(this);
+    final PortalDB database = new PortalDB(this);
     String username;
     EditText searchTxt;
 
@@ -31,19 +31,19 @@ public class AvailableJobOffers extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_available_job_offers);
-        Button backBtn=(Button) findViewById(R.id.btnBackoffers);
+        Button backBtn = (Button) findViewById(R.id.btnBackoffers);
 
-        username=getIntent().getStringExtra("userName");
+        username = getIntent().getStringExtra("userName");
 
-        searchTxt=(EditText)findViewById(R.id.txtSearch);
+        searchTxt = (EditText) findViewById(R.id.txtSearch);
 
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        list=database.ShowAllVacancies(username);
+        list = database.ShowAllVacancies(username);
 
-        adapter=new AllOffersRecyclerViewAdapter(this,list,username);
+        adapter = new AllOffersRecyclerViewAdapter(this, list, username);
         recyclerView.setAdapter(adapter);
 
         searchTxt.addTextChangedListener(new TextWatcher() {
@@ -54,18 +54,17 @@ public class AvailableJobOffers extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                List<jobVacancy> tmpList=new ArrayList<>();
-                if (TextUtils.isEmpty(searchTxt.getText().toString())){
-                    adapter=new AllOffersRecyclerViewAdapter(getApplicationContext(),list,username);
+                List<jobVacancy> tmpList = new ArrayList<>();
+                if (TextUtils.isEmpty(searchTxt.getText().toString())) {
+                    adapter = new AllOffersRecyclerViewAdapter(getApplicationContext(), list, username);
                     recyclerView.setAdapter(adapter);
-                }
-                else{
-                    for(jobVacancy vacancy:list){
-                        if(vacancy.getTittle().toLowerCase(Locale.ROOT).contains(searchTxt.getText().toString().toLowerCase(Locale.ROOT))){
+                } else {
+                    for (jobVacancy vacancy : list) {
+                        if (vacancy.getTittle().toLowerCase(Locale.ROOT).contains(searchTxt.getText().toString().toLowerCase(Locale.ROOT))) {
                             tmpList.add(vacancy);
                         }
                     }
-                    adapter=new AllOffersRecyclerViewAdapter(getApplicationContext(),tmpList,username);
+                    adapter = new AllOffersRecyclerViewAdapter(getApplicationContext(), tmpList, username);
                     recyclerView.setAdapter(adapter);
                 }
             }
@@ -78,8 +77,8 @@ public class AvailableJobOffers extends AppCompatActivity {
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(AvailableJobOffers.this,HomeSeeker.class);
-                i.putExtra("userName",username);
+                Intent i = new Intent(AvailableJobOffers.this, HomeSeeker.class);
+                i.putExtra("userName", username);
                 startActivity(i);
             }
         });

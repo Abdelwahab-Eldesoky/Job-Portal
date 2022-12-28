@@ -16,7 +16,6 @@ public class home_recruiter extends AppCompatActivity {
         setContentView(R.layout.activity_home_recruiter);
         Intent intent=getIntent();
         String username=intent.getStringExtra("userName");
-        System.out.println("home Recruiter "+username);
 
         Button logoutBtn=(Button) findViewById(R.id.btnLogOutrec);
         Button addVacancyBtn=(Button) findViewById(R.id.add_btn);

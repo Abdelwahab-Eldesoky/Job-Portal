@@ -51,7 +51,7 @@ public class SingleOfferDetails extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 database.addApplication(username,AvailableJobOffers.list.get(position).getVacancyID());
-                database.setState(username,"Pending",AvailableJobOffers.list.get(position).getVacancyID());
+                database.setApplicationState(username,"Pending",AvailableJobOffers.list.get(position).getVacancyID());
                 Toast.makeText(getApplicationContext(),"Applied Successfully", Toast.LENGTH_LONG).show();
                 Intent i=new Intent(SingleOfferDetails.this,AvailableJobOffers.class);
                 i.putExtra("userName",username);

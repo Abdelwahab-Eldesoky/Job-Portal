@@ -15,7 +15,7 @@ import java.util.List;
 public class ApplicationsHistoryRecyclerViewAdapter extends RecyclerView.Adapter<ApplicationsHistoryRecyclerViewAdapter.MyViewHolder> {
 
     Context context;
-    List<Pair<String,String>> list;
+    List<Pair<String, String>> list;
     String username;
 
     public ApplicationsHistoryRecyclerViewAdapter(Context context, List<Pair<String, String>> list, String username) {
@@ -46,10 +46,11 @@ public class ApplicationsHistoryRecyclerViewAdapter extends RecyclerView.Adapter
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView jobName, jobStatus;
+
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            jobName=itemView.findViewById(R.id.lblJobTittle);
-            jobStatus=itemView.findViewById(R.id.lblJobState);
+            jobName = itemView.findViewById(R.id.lblJobTittle);
+            jobStatus = itemView.findViewById(R.id.lblJobState);
         }
     }
 }

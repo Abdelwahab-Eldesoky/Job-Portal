@@ -1,9 +1,6 @@
 package com.example.jobportal;
 
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-
-public class jobSeeker extends User{
+public class jobSeeker extends User {
     private String phoneNumber;
     private String mail;
     private String major;
@@ -12,7 +9,7 @@ public class jobSeeker extends User{
     private String gradState;
     private String address;
     private String Gender;
-    private  int yearsOfExp;
+    private int yearsOfExp;
     private String SSN;
     static PortalDB helper;
 
@@ -37,6 +34,7 @@ public class jobSeeker extends User{
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
+
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -104,6 +102,7 @@ public class jobSeeker extends User{
     public void setYearsOfExp(int yearsOfExp) {
         this.yearsOfExp = yearsOfExp;
     }
+
     public String getSSN() {
         return SSN;
     }
@@ -112,28 +111,33 @@ public class jobSeeker extends User{
         this.SSN = SSN;
     }
 
-    public boolean Register(PortalDB db,String name, String username, String password,String phoneNumber, String mail, String major, String uniName, int gradYear, String gradState, String address, String gender, int yearsOfExp){
-    this.setName(name);
-    this.setUsername(username);this.setPassword(password);
-    this.setPhoneNumber(phoneNumber);
-    this.setMail(mail);this.setMajor(major);
-    this.setYearsOfExp(yearsOfExp);
-    this.setGender(gender);this.setAddress(address);
-    this.setGradState(gradState);this.setGradYear(gradYear);
-    this.setUniName(uniName);
+    public boolean Register(PortalDB db, String name, String username, String password, String phoneNumber, String mail, String major, String uniName, int gradYear, String gradState, String address, String gender, int yearsOfExp) {
+        this.setName(name);
+        this.setUsername(username);
+        this.setPassword(password);
+        this.setPhoneNumber(phoneNumber);
+        this.setMail(mail);
+        this.setMajor(major);
+        this.setYearsOfExp(yearsOfExp);
+        this.setGender(gender);
+        this.setAddress(address);
+        this.setGradState(gradState);
+        this.setGradYear(gradYear);
+        this.setUniName(uniName);
 
-    return(db.addSeeker(this));
+        return (db.addSeeker(this));
 
 
     }
-    public static String login(String tableName,PortalDB db , String username , String password){
 
-        String validate=String.valueOf(db.validateSeekerData(tableName,username,password));
-        if(validate=="Not Found"){
+    public static String login(String tableName, PortalDB db, String username, String password) {
+
+        String validate = String.valueOf(db.validateData(tableName, username, password));
+        if (validate == "Not Found") {
             System.out.println("not found");
             return "Not Found";
         }
-        System.out.println("validate  "+ validate);
+        System.out.println("validate  " + validate);
         return validate;
     }
 }

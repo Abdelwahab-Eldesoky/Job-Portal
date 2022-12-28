@@ -25,7 +25,6 @@ public class User {
     }
 
 
-
     public void setPassword(String password) {
         this.password = password;
     }
@@ -39,11 +38,9 @@ public class User {
     }
 
 
-
     public String getPassword() {
         return password;
     }
-
 
 
 }

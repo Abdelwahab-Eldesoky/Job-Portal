@@ -25,35 +25,34 @@ public class AddVacancy extends AppCompatActivity {
         EditText jobDesription = (EditText) findViewById(R.id.descriptionTxt);
 
 
-        RadioButton fullTime=(RadioButton) findViewById(R.id.fullTime_rdb);
-        RadioButton partTime=(RadioButton) findViewById(R.id.partTime_rdb);
+        RadioButton fullTime = (RadioButton) findViewById(R.id.fullTime_rdb);
+        RadioButton partTime = (RadioButton) findViewById(R.id.partTime_rdb);
 
-        Button addVacancy=(Button) findViewById(R.id.addVacancy_btn);
-        final PortalDB database=new PortalDB(this);
-        Intent intent=getIntent();
-        String UserName=intent.getStringExtra("userName");
-        System.out.println("Add vacancy Username "+UserName);
+        Button addVacancy = (Button) findViewById(R.id.addVacancy_btn);
+        final PortalDB database = new PortalDB(this);
+        Intent intent = getIntent();
+        String UserName = intent.getStringExtra("userName");
+        System.out.println("Add vacancy Username " + UserName);
 
         addVacancy.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                String type=" ";
-                if(fullTime.isChecked()){
-                    type="Full Time";
+                String type = " ";
+                if (fullTime.isChecked()) {
+                    type = "Full Time";
+                } else if (partTime.isChecked()) {
+                    type = "part Time";
                 }
-                else if(partTime.isChecked()){
-                    type="part Time";
-                }
-                System.out.println("userName "+UserName);
-                jobVacancy vacancy=new jobVacancy(Integer.parseInt(jobId.getText().toString()),jobTittle.getText().toString(), type,  Integer.parseInt(ExpNeeded.getText().toString()), companyName.getText().toString(), companyMail.getText().toString(), companyAddress.getText().toString(), UserName,jobDesription.getText().toString());
+                System.out.println("userName " + UserName);
+                jobVacancy vacancy = new jobVacancy(Integer.parseInt(jobId.getText().toString()), jobTittle.getText().toString(), type, Integer.parseInt(ExpNeeded.getText().toString()), companyName.getText().toString(), companyMail.getText().toString(), companyAddress.getText().toString(), UserName, jobDesription.getText().toString());
 
 
-                System.out.println("recruiterName is "+ vacancy.getRecruiterName());
+                System.out.println("recruiterName is " + vacancy.getRecruiterName());
                 database.addVacancy(vacancy);
-                Toast.makeText(getApplicationContext(),"Application added Successfully",Toast.LENGTH_LONG).show();
-                Intent i = new Intent(AddVacancy.this,home_recruiter.class);
-                i.putExtra("userName",UserName);
+                Toast.makeText(getApplicationContext(), "Application added Successfully", Toast.LENGTH_LONG).show();
+                Intent i = new Intent(AddVacancy.this, home_recruiter.class);
+                i.putExtra("userName", UserName);
                 startActivity(i);
 
             }

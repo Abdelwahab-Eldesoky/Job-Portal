@@ -20,7 +20,7 @@ public class AllOffersRecyclerViewAdapter extends RecyclerView.Adapter<AllOffers
     public AllOffersRecyclerViewAdapter(Context context, List<jobVacancy> list, String username) {
         this.context = context;
         this.list = list;
-        this.username=username;
+        this.username = username;
     }
 
     @NonNull
@@ -32,8 +32,8 @@ public class AllOffersRecyclerViewAdapter extends RecyclerView.Adapter<AllOffers
 
     @Override
     public void onBindViewHolder(@NonNull AllOffersRecyclerViewAdapter.MyViewHolder holder, final int position) {
-        int pos=position;
-        String tmp = list.get(position).getCompName()+" - "+list.get(position).getCompAddress();
+        int pos = position;
+        String tmp = list.get(position).getCompName() + " - " + list.get(position).getCompAddress();
         holder.jobName.setText(list.get(position).getTittle());
         holder.companyANDaddress.setText(tmp);
         holder.jobDesc.setText(list.get(position).getDescription());
@@ -42,9 +42,9 @@ public class AllOffersRecyclerViewAdapter extends RecyclerView.Adapter<AllOffers
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent= new Intent(context,SingleOfferDetails.class);
-                intent.putExtra("position",pos);
-                intent.putExtra("userName",username);
+                Intent intent = new Intent(context, SingleOfferDetails.class);
+                intent.putExtra("position", pos);
+                intent.putExtra("userName", username);
                 context.startActivity(intent);
             }
         });

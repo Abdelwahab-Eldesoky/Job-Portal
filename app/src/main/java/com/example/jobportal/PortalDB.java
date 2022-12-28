@@ -37,21 +37,30 @@ public class PortalDB extends SQLiteOpenHelper {
         db.execSQL("create table applications(SeekerUsername text,ApplicationState text,JobID integer,Foreign key(SeekerUsername) References jobSeeker(UserName) , Foreign key(JobID) References JobVacancy(vacancyID),primary key(SeekerUsername,JobID))");
     }
 
-    public void setState(String username, String status, int jobID) {
-        System.out.println("State "+ status);
-        System.out.println("username "+username);
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("ApplicationState", status);
+    public String validateData(String tableName, String userName, String password) {
         PortalDb = getReadableDatabase();
-        PortalDb.update("applications", contentValues, "SeekerUsername=? and JobID=?", new String[]{username, String.valueOf(jobID)});
+
+        String[] rowdetails = {"UserName"};
+        String[] args = {userName, password};
+        String UserName = "Not Found";
+
+        Cursor c = PortalDb.query(tableName, rowdetails, "UserName=? and password = ?", args, null, null, null);
+
+        if (c != null) {
+            c.moveToFirst();
+            if (c.getCount() > 0) {
+                UserName = c.getString(0);
+            }
+        }
         PortalDb.close();
+
+        return UserName;
     }
 
     public Boolean addSeeker(jobSeeker seek) {
-
         PortalDb = getReadableDatabase();
-        Cursor c=PortalDb.rawQuery("Select name from jobSeeker where UserName=? ",new String[]{seek.getUsername()});
-        if(c.getCount()>0){
+        Cursor c = PortalDb.rawQuery("Select name from jobSeeker where UserName=? ", new String[]{seek.getUsername()});
+        if (c.getCount() > 0) {
             return false;
         }
 
@@ -74,43 +83,7 @@ public class PortalDB extends SQLiteOpenHelper {
         return true;
     }
 
-    public Boolean addRecruiter(Recruiter recruiter) {
-        PortalDb = getReadableDatabase();
-        Cursor c=PortalDb.rawQuery("Select name from Recruiter where UserName=? ",new String[]{recruiter.getUsername()});
-        if(c.getCount()>0){
-            return false;
-        }
-        ContentValues row = new ContentValues();
-
-        row.put("UserName", recruiter.getUsername());
-        row.put("password", recruiter.getPassword());
-        row.put("name", recruiter.getName());
-
-        PortalDb = getWritableDatabase();
-        PortalDb.insert("Recruiter", null, row);
-        PortalDb.close();
-        return true;
-    }
-
-
-    public void addVacancy(jobVacancy vacancy) {
-        ContentValues row = new ContentValues();
-        row.put("vacancyID", vacancy.getVacancyID());
-        row.put("tittle", vacancy.getTittle());
-        row.put("jobType", vacancy.getJobType());
-        row.put("expNeeded", vacancy.getExpNeeded());
-        row.put("compName", vacancy.getCompName());
-        row.put("compMail", vacancy.getCompMail());
-        row.put("compAddress", vacancy.getCompAddress());
-        row.put("RecruiterUsername", vacancy.getRecruiterName());
-        row.put("jobDescription", vacancy.getDescription());
-        PortalDb = getWritableDatabase();
-        PortalDb.insert("jobVacancy", null, row);
-        PortalDb.close();
-    }
-
     public void addApplication(String seekUsername, int jobId) {
-
         ContentValues row = new ContentValues();
         row.put("SeekerUsername", seekUsername);
         row.put("JobID", jobId);
@@ -121,11 +94,11 @@ public class PortalDB extends SQLiteOpenHelper {
 
     @SuppressLint("Range")
     public jobSeeker getUserInfo(String userName) {
-        //UserName ,phone , password, name , mail , major , uniName , gradYear ,gradState ,address ,yearsOfExp
+
         PortalDb = getReadableDatabase();
-        String[] rawdetails = {"name,UserName,password", "phone", "mail", "address", "major", "uniName", "gradYear", "yearsOfExp", "gradState", "gender"};
+        String[] rowdetails = {"name,UserName,password", "phone", "mail", "address", "major", "uniName", "gradYear", "yearsOfExp", "gradState", "gender"};
         String[] args = {userName};
-        Cursor c = PortalDb.query("jobSeeker", rawdetails, "UserName=?", args, null, null, null);
+        Cursor c = PortalDb.query("jobSeeker", rowdetails, "UserName=?", args, null, null, null);
         if (c != null) {
             c.moveToFirst();
         }
@@ -143,30 +116,10 @@ public class PortalDB extends SQLiteOpenHelper {
         seeker.setGradState(c.getString(c.getColumnIndex("gradState")));
         seeker.setGender(c.getString(c.getColumnIndex("gender")));
 
-        c.close();;
+        c.close();
+        ;
         PortalDb.close();
         return seeker;
-    }
-
-    public String validateSeekerData(String tableName, String userName, String password) {
-        PortalDb = getReadableDatabase();
-        String[] rawdetails = {"UserName"};
-        String[] args = {userName, password};
-        Cursor c = PortalDb.query(tableName, rawdetails, "UserName=? and password = ?", args, null, null, null);
-
-        String UserName = "Not Found";
-        if (c != null) {
-            c.moveToFirst();
-            if (c.getCount() > 0) {
-                UserName = c.getString(0);
-            }
-
-        }
-
-        PortalDb.close();
-
-        System.out.println("UserName " + UserName);
-        return UserName;
     }
 
     public void updateInformaation(String username, ContentValues values) {
@@ -180,7 +133,7 @@ public class PortalDB extends SQLiteOpenHelper {
 
         ArrayList<jobVacancy> vacancies = new ArrayList<>();
         PortalDb = getReadableDatabase();
-        Cursor c = PortalDb.rawQuery("select* from jobVacancy where not EXISTS (select SeekerUsername,JobID from applications where SeekerUsername=? and applications.JobID=jobVacancy.vacancyID)",new String[]{username});
+        Cursor c = PortalDb.rawQuery("select* from jobVacancy where not EXISTS (select SeekerUsername,JobID from applications where SeekerUsername=? and applications.JobID=jobVacancy.vacancyID)", new String[]{username});
         if (c != null) {
             c.moveToFirst();
         }
@@ -198,21 +151,69 @@ public class PortalDB extends SQLiteOpenHelper {
             vacancies.add(vacancy);
             c.moveToNext();
         }
-        System.out.println("count= " + c.getCount());
-        System.out.println("test " + (c.getColumnIndex("RecruiterUsername")));
+
         PortalDb.close();
         return vacancies;
     }
 
+    public List<Pair<String, String>> showHistory(String username) {
+        PortalDb = getReadableDatabase();
+        List<Pair<String, String>> listOfHistory = new ArrayList<>();
+        String name;
+        Cursor c = PortalDb.rawQuery("select distinct jobVacancy.tittle,jobVacancy.compName ,applications.applicationState from jobVacancy inner join applications on SeekerUsername=? and  jobVacancy.vacancyID=applications.JobID", new String[]{username});
+        if (c != null) {
+            c.moveToFirst();
+        }
+        while (!c.isAfterLast()) {
+            name = c.getString(0) + "\n" + c.getString(1);
+            listOfHistory.add(new Pair<String, String>(name, c.getString(2)));
+            c.moveToNext();
+        }
+        PortalDb.close();
+        return listOfHistory;
+    }
+
+    public Boolean addRecruiter(Recruiter recruiter) {
+        PortalDb = getReadableDatabase();
+        Cursor c = PortalDb.rawQuery("Select name from Recruiter where UserName=? ", new String[]{recruiter.getUsername()});
+        if (c.getCount() > 0) {
+            return false;
+        }
+        ContentValues row = new ContentValues();
+
+        row.put("UserName", recruiter.getUsername());
+        row.put("password", recruiter.getPassword());
+        row.put("name", recruiter.getName());
+
+        PortalDb = getWritableDatabase();
+        PortalDb.insert("Recruiter", null, row);
+        PortalDb.close();
+        return true;
+    }
+
+    public void addVacancy(jobVacancy vacancy) {
+        ContentValues row = new ContentValues();
+        row.put("vacancyID", vacancy.getVacancyID());
+        row.put("tittle", vacancy.getTittle());
+        row.put("jobType", vacancy.getJobType());
+        row.put("expNeeded", vacancy.getExpNeeded());
+        row.put("compName", vacancy.getCompName());
+        row.put("compMail", vacancy.getCompMail());
+        row.put("compAddress", vacancy.getCompAddress());
+        row.put("RecruiterUsername", vacancy.getRecruiterName());
+        row.put("jobDescription", vacancy.getDescription());
+        PortalDb = getWritableDatabase();
+        PortalDb.insert("jobVacancy", null, row);
+        PortalDb.close();
+    }
 
     @SuppressLint("Range")
-    public ArrayList<jobSeeker> showApplicants(int jobId) {
+    public ArrayList<jobSeeker> showJobApplicants(int jobId) {
         PortalDb = getReadableDatabase();
         Cursor c = PortalDb.rawQuery("select * from jobSeeker Inner join applications on jobSeeker.UserName=SeekerUsername where JobID=? and ApplicationState=?  ", new String[]{String.valueOf(jobId), "Pending"});
         if (c != null) {
             c.moveToFirst();
         }
-        System.out.println("test test " + c.getCount());
         ArrayList<jobSeeker> applicants = new ArrayList<>();
         while (!c.isAfterLast()) {
             jobSeeker seeker = new jobSeeker();
@@ -236,7 +237,7 @@ public class PortalDB extends SQLiteOpenHelper {
         return applicants;
     }
 
-    public ArrayList<String> showJobs(String RecruiterUsername) {
+    public ArrayList<String> showRecruiterJobs(String RecruiterUsername) {
         PortalDb = getReadableDatabase();
         Cursor c = PortalDb.rawQuery("select vacancyID from jobvacancy  where RecruiterUsername=?   ", new String[]{RecruiterUsername});
         if (c != null) {
@@ -252,21 +253,14 @@ public class PortalDB extends SQLiteOpenHelper {
         return jobIdList;
     }
 
-    public List<Pair<String, String>> showHistory(String username) {
+
+    public void setApplicationState(String username, String status, int jobID) {
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("ApplicationState", status);
         PortalDb = getReadableDatabase();
-        List<Pair<String, String>> listOfHistory = new ArrayList<>();
-        String name;
-        Cursor c = PortalDb.rawQuery("select distinct jobVacancy.tittle,jobVacancy.compName ,applications.applicationState from jobVacancy inner join applications on SeekerUsername=? and  jobVacancy.vacancyID=applications.JobID", new String[]{username});
-        if (c != null) {
-            c.moveToFirst();
-        }
-        while (!c.isAfterLast()) {
-            name=c.getString(0)+"\n"+c.getString(1);
-            listOfHistory.add(new Pair<String, String>(name, c.getString(2)));
-            c.moveToNext();
-        }
+        PortalDb.update("applications", contentValues, "SeekerUsername=? and JobID=?", new String[]{username, String.valueOf(jobID)});
         PortalDb.close();
-        return listOfHistory;
     }
 
     @Override
